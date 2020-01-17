@@ -18,8 +18,8 @@
         tag="v-list"
         column
       >
-        <v-list-tile avatar>
-          <v-list-tile-avatar
+        <v-list avatar>
+          <v-list-item-avatar
             color="white"
           >
             <v-img
@@ -27,13 +27,13 @@
               height="34"
               contain
             />
-          </v-list-tile-avatar>
-          <v-list-tile-title class="title">
+          </v-list-item-avatar>
+          <v-list-item-title class="title">
             Vuetify MD
-          </v-list-tile-title>
-        </v-list-tile>
+          </v-list-item-title>
+        </v-list>
         <v-divider/>
-        <v-list-tile
+        <v-list
           v-for="(link, i) in links"
           :key="i"
           :to="link.to"
@@ -41,25 +41,25 @@
           avatar
           class="v-list-item"
         >
-          <v-list-tile-action>
+          <v-list-item-action>
             <v-icon>{{ link.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title
+          </v-list-item-action>
+          <v-list-item-title
             v-text="link.text"
           />
-        </v-list-tile>
-        <v-list-tile
+        </v-list>
+        <v-list
           active-class="success"
           class="v-list-item v-list__tile--buy"
           to="/upgrade"
         >
-          <v-list-tile-action>
+          <v-list-item-action>
             <v-icon>mdi-package-up</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title class="font-weight-light">
+          </v-list-item-action>
+          <v-list-item-title class="font-weight-light">
             Upgrade To PRO
-          </v-list-tile-title>
-        </v-list-tile>
+          </v-list-item-title>
+        </v-list>
       </v-layout>
     </v-img>
   </v-navigation-drawer>
