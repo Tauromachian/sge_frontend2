@@ -1,9 +1,8 @@
 <template>
-  <v-toolbar
+  <v-app-bar
     id="core-toolbar"
     app
     flat
-    prominent
     style="background: #eee;"
   >
     <div class="v-toolbar-title">
@@ -67,15 +66,15 @@
           </router-link>
           <v-card>
             <v-list dense>
-              <v-list-tile
+              <v-list-item
                 v-for="notification in notifications"
                 :key="notification"
                 @click="onClick"
               >
-                <v-list-tile-title
+                <v-list-title
                   v-text="notification"
                 />
-              </v-list-tile>
+              </v-list-item>
             </v-list>
           </v-card>
         </v-menu>
@@ -88,7 +87,7 @@
         </router-link>
       </v-flex>
     </v-toolbar-items>
-  </v-toolbar>
+  </v-app-bar>
 </template>
 
 <script>
