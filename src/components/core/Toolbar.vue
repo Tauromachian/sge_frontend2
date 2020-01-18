@@ -1,10 +1,8 @@
 <template>
   <v-app-bar id="core-toolbar" flat style="background: #eee;">
     <div class="v-toolbar-title">
-      <v-toolbar-title class="tertiary--text font-weight-light">
-        <v-btn v-if="responsive" class="default v-btn--simple" dark icon @click.stop="onClickBtn">
-          <v-icon>mdi-view-list</v-icon>
-        </v-btn>
+      <v-toolbar-title>
+        <v-icon>mdi-view-list</v-icon>
         {{ title }}
       </v-toolbar-title>
     </div>
@@ -16,26 +14,23 @@
         <router-link v-ripple class="toolbar-items" to="/">
           <v-icon color="tertiary">mdi-view-dashboard</v-icon>
         </router-link>
-        <v-menu bottom left content-class="dropdown-menu" offset-y transition="slide-y-transition">
+        <v-menu left bottom offset-x="left" offset-y>
           <template v-slot:activator="{ on }">
-            <router-link v-ripple v-on="on" class="toolbar-items" to="/notifications">
-              <v-badge color="error" overlap>
-                <template slot="badge">{{ notifications.length }}</template>
-                <v-icon color="tertiary">mdi-bell</v-icon>
+            <router-link v-ripple class="toolbar-items" to="/notifications">
+              <v-badge color="error" :content="notifications.length" overlap>
+                <v-icon v-on="on" color="tertiary">mdi-bell</v-icon>
               </v-badge>
             </router-link>
-            <v-card>
-              <v-list dense>
-                <v-list-item
-                  v-for="notification in notifications"
-                  :key="notification"
-                  @click="onClick"
-                >
-                  <v-list-item-title v-text="notification" />
-                </v-list-item>
-              </v-list>
-            </v-card>
           </template>
+          <v-list dense disabled>
+            <v-list-item
+              v-for="(notification, index) in notifications"
+              :key="index"
+              @click="onClick"
+            >
+              <v-list-item-title v-text="notification" />
+            </v-list-item>
+          </v-list>
         </v-menu>
         <router-link v-ripple class="toolbar-items" to="/user-profile">
           <v-icon color="tertiary">mdi-account</v-icon>
