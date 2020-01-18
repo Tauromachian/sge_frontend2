@@ -14,7 +14,7 @@
         <router-link v-ripple class="toolbar-items" to="/">
           <v-icon color="tertiary">mdi-view-dashboard</v-icon>
         </router-link>
-        <v-menu left bottom offset-x="left" offset-y>
+        <v-menu left bottom offset-x offset-y>
           <template v-slot:activator="{ on }">
             <router-link v-ripple class="toolbar-items" to="/notifications">
               <v-badge color="error" :content="notifications.length" overlap>
