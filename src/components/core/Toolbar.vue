@@ -18,7 +18,7 @@
         </router-link>
         <v-menu bottom left content-class="dropdown-menu" offset-y transition="slide-y-transition">
           <template v-slot:activator="{ on }">
-            <router-link v-ripple slot="activator" class="toolbar-items" to="/notifications">
+            <router-link v-ripple v-on="on" class="toolbar-items" to="/notifications">
               <v-badge color="error" overlap>
                 <template slot="badge">{{ notifications.length }}</template>
                 <v-icon color="tertiary">mdi-bell</v-icon>
