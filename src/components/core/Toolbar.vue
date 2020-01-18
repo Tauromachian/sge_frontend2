@@ -23,11 +23,7 @@
             </router-link>
           </template>
           <v-list dense disabled>
-            <v-list-item
-              v-for="(notification, index) in notifications"
-              :key="index"
-              @click="onClick"
-            >
+            <v-list-item v-for="(notification, index) in notifications" :key="index">
               <v-list-item-title v-text="notification" />
             </v-list-item>
           </v-list>
@@ -52,8 +48,7 @@ export default {
       "Another Notification",
       "Another One"
     ],
-    title: null,
-    responsive: false
+    title: null
   }),
 
   watch: {
@@ -62,28 +57,10 @@ export default {
     }
   },
 
-  mounted() {
-    this.onResponsiveInverted();
-    window.addEventListener("resize", this.onResponsiveInverted);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.onResponsiveInverted);
-  },
-
   methods: {
     ...mapMutations("app", ["setDrawer", "toggleDrawer"]),
     onClickBtn() {
       this.setDrawer(!this.$store.state.app.drawer);
-    },
-    onClick() {
-      //
-    },
-    onResponsiveInverted() {
-      if (window.innerWidth < 991) {
-        this.responsive = true;
-      } else {
-        this.responsive = false;
-      }
     }
   }
 };
