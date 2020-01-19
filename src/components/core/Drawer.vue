@@ -1,33 +1,24 @@
 <template>
-  <v-navigation-drawer
-    id="app-drawer"
-    v-model="inputValue"
-    app
-    dark
-    floating
-    persistent
-    mobile-break-point="991"
-    width="260"
-  >
-    <v-layout class="fill-height" tag="v-list" column>
-      <v-list>
-        <v-list-item-title class="title">Vuetify MD</v-list-item-title>
-        <v-list-item-avatar color="white">
-          <v-img :src="logo" height="34" contain />
-        </v-list-item-avatar>
-      </v-list>
-      <v-divider />
-      <v-list nav :active-class="color" avatar class="v-list-item">
-        <v-list-item-group>
-          <v-list-item v-for="(link, i) in links" :key="i" :to="link.to">
-            <v-list-item-icon>
-              <v-icon>{{ link.icon }}</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title v-text="link.text" />
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-layout>
+  <v-navigation-drawer v-model="inputValue" app dark :color="color">
+    <v-list-item>
+      <v-list-item-avatar color="white">
+        <v-img :src="logo" height="34" contain />
+      </v-list-item-avatar>
+      <v-list-item-title class="title">Vuetify MD</v-list-item-title>
+    </v-list-item>
+
+    <v-divider />
+
+    <v-list nav :color="color">
+      <v-list-item v-for="(link, i) in links" :key="i" :to="link.to" link>
+        <v-list-item-icon>
+          <v-icon>{{ link.icon }}</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title v-text="link.text" />
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
   </v-navigation-drawer>
 </template>
 
@@ -102,16 +93,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-#app-drawer {
-  .v-list__tile {
-    border-radius: 4px;
-
-    &--buy {
-      margin-top: auto;
-      margin-bottom: 17px;
-    }
-  }
-}
-</style>
