@@ -10,7 +10,7 @@
     <v-divider />
 
     <v-list nav :color="color">
-      <v-list-item v-for="(link, i) in links" :key="i" :to="link.to" link>
+      <v-list-item class="mt-3" v-for="(link, i) in links" :key="i" :to="link.to" link>
         <v-list-item-icon>
           <v-icon>{{ link.icon }}</v-icon>
         </v-list-item-icon>
