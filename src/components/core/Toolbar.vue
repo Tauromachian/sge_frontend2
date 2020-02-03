@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar id="core-toolbar" flat style="background: #eee;">
+  <v-app-bar app id="core-toolbar" flat style="background: #eee;">
     <div class="v-toolbar-title">
       <v-toolbar-title>
         <v-icon>mdi-view-list</v-icon>
