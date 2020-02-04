@@ -4,7 +4,7 @@
       <v-list-item-avatar color="white">
         <v-img :src="logo" height="34" contain />
       </v-list-item-avatar>
-      <v-list-item-title class="title">Vuetify MD</v-list-item-title>
+      <v-list-item-title class="title">SGE</v-list-item-title>
     </v-list-item>
 
     <v-divider />
@@ -39,37 +39,17 @@ export default {
       {
         to: "/",
         icon: "mdi-view-dashboard",
-        text: "Dashboard"
+        text: "Servicios"
       },
       {
         to: "/user-profile",
         icon: "mdi-account",
-        text: "User Profile"
+        text: "Planes"
       },
       {
         to: "/table-list",
         icon: "mdi-clipboard-outline",
-        text: "Table List"
-      },
-      {
-        to: "/typography",
-        icon: "mdi-format-font",
-        text: "Typography"
-      },
-      {
-        to: "/icons",
-        icon: "mdi-chart-bubble",
-        text: "Icons"
-      },
-      {
-        to: "/maps",
-        icon: "mdi-map-marker",
-        text: "Maps"
-      },
-      {
-        to: "/notifications",
-        icon: "mdi-bell",
-        text: "Notifications"
+        text: "Transformadores"
       }
     ]
   }),
