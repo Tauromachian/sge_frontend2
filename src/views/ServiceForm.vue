@@ -39,7 +39,7 @@
                   <v-text-field label="Numero del metro" />
                 </v-flex>
                 <v-flex xs12 md4>
-                  <v-select label="Metraje" />
+                  <v-select label="Metraje" v-model="metrageSelect" :items="metrageItems"/>
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-text-field label="Capacidad" />
@@ -63,7 +63,9 @@ export default {
   data: function() {
     return {
       alimentationSelect: "Simple",
-      alimentationItems: ["Simple", "Doble"]
+      alimentationItems: ["Simple", "Doble"],
+      metrageSelect: "Alta",
+      metrageItems: ["Baja", "Alta"]
     };
   }
 };
