@@ -4,8 +4,8 @@
       <v-flex xs12 md8>
         <material-card
           color="primary"
-          title="Formulario de servicio"
-          text="Inserta un nuevo servicio"
+          title="Formulario de planes"
+          text="Inserta un nuevo plan"
         >
           <v-form>
             <v-container py-0>
