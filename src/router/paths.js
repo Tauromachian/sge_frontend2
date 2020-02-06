@@ -7,7 +7,12 @@ export default [
   {
     path: '',
     // Relative to /src/views
-    view: 'Dashboard'
+    view: 'ServiceForm'
+  },
+  {
+    path: '/plan-form',
+    name: 'Plan Form',
+    view: 'PlanForm'
   },
   {
     path: '/user-profile',
