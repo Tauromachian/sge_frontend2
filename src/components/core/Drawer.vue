@@ -42,7 +42,7 @@ export default {
         text: "Servicios"
       },
       {
-        to: "/user-profile",
+        to: "/plan-form",
         icon: "mdi-account",
         text: "Planes"
       },
@@ -50,6 +50,12 @@ export default {
         to: "/table-list",
         icon: "mdi-clipboard-outline",
         text: "Transformadores"
+      },
+      {
+        to: "/user-profile",
+
+        icon: "mdi-account",
+        text: "Usuarios"
       }
     ]
   }),
