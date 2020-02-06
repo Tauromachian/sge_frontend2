@@ -4,6 +4,9 @@
       <v-container py-0>
         <v-layout wrap>
           <v-flex xs12 md6>
+            <v-autocomplete label="Servicio" :items="services" />
+          </v-flex>
+          <v-flex xs12 md6>
             <v-text-field label="Año" />
           </v-flex>
           <v-flex xs12 md6>
@@ -56,6 +59,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "ServiceForm",
   data: function() {
@@ -65,6 +70,9 @@ export default {
       metrageSelect: "Alta",
       metrageItems: ["Baja", "Alta"]
     };
+  },
+  computed: {
+    ...mapState("app", ["services"])
   }
 };
 </script>
