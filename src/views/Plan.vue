@@ -3,12 +3,7 @@
     <v-layout justify-center wrap>
       <v-flex>
         <v-card>
-          <v-tabs
-            v-model="tabs"
-            color="transparent"
-            slider-color="white"
-            background-color="primary"
-          >
+          <v-tabs color="transparent" slider-color="white" background-color="primary">
             <v-tabs-slider></v-tabs-slider>
             <v-tab class="mr-3">
               <v-icon class="mr-2">mdi-bug</v-icon>Crear
