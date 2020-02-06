@@ -7,13 +7,13 @@
             <v-text-field label="Nombre del Servicio" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Demanda Contratada" />
+            <v-text-field label="Demanda Contratada (kW)" />
           </v-flex>
           <v-flex xs12 md6>
             <v-text-field label="CRF" />
           </v-flex>
-          <v-flex xs12 md6>
-            <v-text-field label="Exclusivo" />
+          <v-flex xs12 md4>
+            <v-switch label="Exclusivo" />
           </v-flex>
           <v-flex xs12 md6>
             <v-text-field label="Tipo de tarifa" />
