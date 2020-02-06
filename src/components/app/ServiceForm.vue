@@ -22,13 +22,13 @@
             <v-text-field label="Turnos" />
           </v-flex>
           <v-flex xs12 md4>
-            <v-select label="Alimentacion" v-model="alimentationSelect" :items="alimentationItems" />
+            <v-select label="Alimentacion" v-model="alimentation" :items="alimentationItems" />
           </v-flex>
           <v-flex xs12 md4>
             <v-text-field label="Numero del metro" />
           </v-flex>
           <v-flex xs12 md4>
-            <v-select label="Metraje" v-model="metrageSelect" :items="metrageItems" />
+            <v-select label="Metraje" v-model="metrage" :items="metrageItems" />
           </v-flex>
           <v-flex xs12 md4>
             <v-text-field label="Capacidad" />
@@ -48,10 +48,11 @@ export default {
   name: "ServiceForm",
   data: function() {
     return {
-      alimentationSelect: "Simple",
+      alimentation: "Simple",
+      metrage: "Alta",
       alimentationItems: ["Simple", "Doble"],
-      metrageSelect: "Alta",
-      metrageItems: ["Baja", "Alta"]
+      metrageItems: ["Baja", "Alta"],
+
     };
   }
 };
