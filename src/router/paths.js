@@ -12,8 +12,8 @@ export default [
   },
   {
     path: '/plan-form',
-    name: 'Plan Form',
-    view: 'PlanForm'
+    name: 'Planes',
+    view: 'Plan'
   },
   {
     path: '/user-profile',
