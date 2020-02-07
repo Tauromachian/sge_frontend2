@@ -2,7 +2,9 @@
   <v-app-bar app id="core-toolbar" flat style="background: #eee;">
     <div class="v-toolbar-title">
       <v-toolbar-title>
-        <v-icon>mdi-view-list</v-icon>
+        <v-btn class="default v-btn--simple" dark icon @click.stop="onClickBtn">
+          <v-icon>mdi-view-list</v-icon>
+        </v-btn>
         {{ title }}
       </v-toolbar-title>
     </div>
