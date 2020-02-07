@@ -4,16 +4,16 @@
       <v-container py-0>
         <v-layout wrap>
           <v-flex xs12 md6>
-            <v-text-field label="Nombre del Servicio" />
+            <v-text-field label="Nombre del Servicio" v-model="serviceName"/>
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Demanda Contratada (kW)" />
+            <v-text-field label="Codigo del servicio" v-model="serviceCode"/>
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="CRF" />
+            <v-text-field label="CRF" v-model="crf"/>
           </v-flex>
           <v-flex xs12 md4>
-            <v-switch label="Exclusivo" />
+            <v-switch label="Exclusivo" v-model="exclusive" />
           </v-flex>
           <v-flex xs12 md6>
             <v-text-field label="Tipo de tarifa" />
@@ -24,6 +24,9 @@
           <v-flex xs12 md4>
             <v-select label="Alimentacion" v-model="alimentation" :items="alimentationItems" />
           </v-flex>
+          <v-flex xs12 md6>
+            <v-text-field label="Demanda Contratada (kW)" />
+          </v-flex>
           <v-flex xs12 md4>
             <v-text-field label="Numero del metro" />
           </v-flex>
@@ -32,6 +35,9 @@
           </v-flex>
           <v-flex xs12 md4>
             <v-text-field label="Capacidad" />
+          </v-flex>
+          <v-flex xs12 md4>
+            <v-text-field label="Cantidad de transformadores" />
           </v-flex>
 
           <v-flex xs12 text-xs-right>
@@ -48,11 +54,16 @@ export default {
   name: "ServiceForm",
   data: function() {
     return {
+      serviceName: '',
+      serviceCode: '',
+      crf: '',
+      exclusive: false,
+      tarifType: '',
+      turn: '',
       alimentation: "Simple",
       metrage: "Alta",
       alimentationItems: ["Simple", "Doble"],
-      metrageItems: ["Baja", "Alta"],
-
+      metrageItems: ["Baja", "Alta"]
     };
   }
 };
