@@ -4,13 +4,13 @@
       <v-container py-0>
         <v-layout wrap>
           <v-flex xs12 md6>
-            <v-text-field label="Nombre del Servicio" v-model="serviceName"/>
+            <v-text-field label="Nombre del Servicio" v-model="serviceName" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Codigo del servicio" v-model="serviceCode"/>
+            <v-text-field label="Codigo del servicio" v-model="serviceCode" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="CRF" v-model="crf"/>
+            <v-text-field label="CRF" v-model="crf" />
           </v-flex>
           <v-flex xs12 md4>
             <v-switch label="Exclusivo" v-model="exclusive" />
@@ -39,7 +39,7 @@
           <v-flex xs12 md4>
             <v-text-field label="Cantidad de transformadores" />
           </v-flex>
-
+          
           <v-flex xs12 text-xs-right>
             <v-btn class="mx-0 font-weight-light" color="primary">Insertar</v-btn>
           </v-flex>
@@ -54,12 +54,12 @@ export default {
   name: "ServiceForm",
   data: function() {
     return {
-      serviceName: '',
-      serviceCode: '',
-      crf: '',
+      serviceName: "",
+      serviceCode: "",
+      crf: "",
       exclusive: false,
-      tarifType: '',
-      turn: '',
+      tarifType: "",
+      turn: "",
       alimentation: "Simple",
       metrage: "Alta",
       alimentationItems: ["Simple", "Doble"],
