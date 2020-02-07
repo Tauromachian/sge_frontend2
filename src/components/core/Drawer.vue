@@ -1,10 +1,13 @@
 <template>
-  <v-navigation-drawer v-model="inputValue" app dark :color="color">
+  <v-navigation-drawer v-model="inputValue" app dark :color="color" :mini-variant.sync="mini">
     <v-list-item>
       <v-list-item-avatar color="white">
         <v-img :src="logo" height="34" contain />
       </v-list-item-avatar>
       <v-list-item-title class="title">SGE</v-list-item-title>
+      <v-btn icon @click.stop="mini = !mini">
+        <v-icon>mdi-chevron-left</v-icon>
+      </v-btn>
     </v-list-item>
 
     <v-divider />
@@ -35,6 +38,7 @@ export default {
   },
   data: () => ({
     logo: "favicon.ico",
+    mini: false,
     links: [
       {
         to: "/",
