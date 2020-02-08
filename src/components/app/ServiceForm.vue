@@ -16,30 +16,30 @@
             <v-switch label="Exclusivo" v-model="exclusive" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Tipo de tarifa" />
+            <v-text-field label="Tipo de tarifa" v-model="tarifType"/>
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Turnos" />
+            <v-text-field label="Turnos" v-model="turn"/>
           </v-flex>
           <v-flex xs12 md4>
             <v-select label="Alimentacion" v-model="alimentation" :items="alimentationItems" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Demanda Contratada (kW)" />
+            <v-text-field label="Demanda Contratada (kW)" v-model="hiredDemand"/>
           </v-flex>
           <v-flex xs12 md4>
-            <v-text-field label="Numero del metro" />
+            <v-text-field label="Numero del metro" v-model="meterNumber"/>
           </v-flex>
           <v-flex xs12 md4>
             <v-select label="Metraje" v-model="metrage" :items="metrageItems" />
           </v-flex>
           <v-flex xs12 md4>
-            <v-text-field label="Capacidad" />
+            <v-text-field label="Capacidad" v-model="capacity"/>
           </v-flex>
           <v-flex xs12 md4>
-            <v-text-field label="Cantidad de transformadores" />
+            <v-select label="Cantidad de transformadores" :items="transformersItems"/>
           </v-flex>
-          
+
           <v-flex xs12 text-xs-right>
             <v-btn class="mx-0 font-weight-light" color="primary">Insertar</v-btn>
           </v-flex>
@@ -60,10 +60,14 @@ export default {
       exclusive: false,
       tarifType: "",
       turn: "",
+      hiredDemand: "",
+      meterNumber: "",
       alimentation: "Simple",
       metrage: "Alta",
+      capacity: "",
       alimentationItems: ["Simple", "Doble"],
-      metrageItems: ["Baja", "Alta"]
+      metrageItems: ["Baja", "Alta"],
+      transformersItems: [1,2,3]
     };
   }
 };
