@@ -37,7 +37,7 @@ export default {
     }
   },
   data: () => ({
-    logo: "favicon.ico",
+    logo: "logo.png",
     mini: false,
     links: [
       {
