@@ -16,28 +16,32 @@
             <v-switch label="Exclusivo" v-model="exclusive" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Tipo de tarifa" v-model="tarifType"/>
+            <v-text-field label="Tipo de tarifa" v-model="tarifType" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Turnos" v-model="turn"/>
+            <v-text-field label="Turnos" v-model="turn" />
           </v-flex>
           <v-flex xs12 md4>
             <v-select label="Alimentacion" v-model="alimentation" :items="alimentationItems" />
           </v-flex>
-          <v-flex xs12 md6>
-            <v-text-field label="Demanda Contratada (kW)" v-model="hiredDemand"/>
+          <v-flex xs12 md4>
+            <v-text-field label="Demanda Contratada (kW)" v-model="hiredDemand" />
           </v-flex>
           <v-flex xs12 md4>
-            <v-text-field label="Numero del metro" v-model="meterNumber"/>
+            <v-text-field label="Numero del metro" v-model="meterNumber" />
           </v-flex>
           <v-flex xs12 md4>
             <v-select label="Metraje" v-model="metrage" :items="metrageItems" />
           </v-flex>
-          <v-flex xs12 md4>
-            <v-text-field label="Capacidad" v-model="capacity"/>
+          <v-flex xs12 md4 v-if="metrage == 'Alta'">
+            <v-text-field label="Capacidad" v-model="capacity" />
           </v-flex>
-          <v-flex xs12 md4>
-            <v-select label="Cantidad de transformadores" :items="transformersItems"/>
+          <v-flex xs12 md4 v-else>
+            <v-select label="Cantidad de transformadores" :items="transformersItems" v-model="transformersAmount"/>
+          </v-flex>
+
+          <v-flex xs12 md4 v-for="i in transformersAmount" :key="i">
+            <app-transformer-form></app-transformer-form>
           </v-flex>
 
           <v-flex xs12 text-xs-right>
@@ -67,8 +71,16 @@ export default {
       capacity: "",
       alimentationItems: ["Simple", "Doble"],
       metrageItems: ["Baja", "Alta"],
-      transformersItems: [1,2,3]
+      transformersAmount: 0,
+      transformersItems: [1, 2, 3]
     };
+  },
+  watch: {
+    metrage: function(val) {
+      if (val === "Alta") {
+        this.transformersAmount = 0;
+      }
+    }
   }
 };
 </script>
