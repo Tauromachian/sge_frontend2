@@ -12,14 +12,15 @@
           <v-flex xs12 md6>
             <v-text-field label="CRF" v-model="crf" />
           </v-flex>
-          <v-flex xs12 md4>
+          <v-flex xs12 md3>
             <v-switch label="Exclusivo" v-model="exclusive" />
+          </v-flex>
+          <v-flex xs12 md3>
+            <v-subheader class="pl-0">Turnos</v-subheader>
+            <v-slider v-model="turn" :thumb-size="24" thumb-label="always" :max="3" :min="1"></v-slider>
           </v-flex>
           <v-flex xs12 md6>
             <v-text-field label="Tipo de tarifa" v-model="tarifType" />
-          </v-flex>
-          <v-flex xs12 md6>
-            <v-text-field label="Turnos" v-model="turn" />
           </v-flex>
           <v-flex xs12 md4>
             <v-select label="Alimentacion" v-model="alimentation" :items="alimentationItems" />
