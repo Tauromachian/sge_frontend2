@@ -7,46 +7,46 @@
             <v-autocomplete label="Servicio" :items="services" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Año" />
+            <v-text-field :rules="yearPlanRules" label="Año" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Plan del año" />
+            <v-text-field :rules="monthPlanRules" label="Plan del año" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Enero" />
+            <v-text-field :rules="monthPlanRules" label="Enero" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Febrero" />
+            <v-text-field :rules="monthPlanRules" label="Febrero" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Marzo" />
+            <v-text-field :rules="monthPlanRules" label="Marzo" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Abril" />
+            <v-text-field :rules="monthPlanRules" label="Abril" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Mayo" />
+            <v-text-field :rules="monthPlanRules" label="Mayo" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Junio" />
+            <v-text-field :rules="monthPlanRules" label="Junio" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Julio" />
+            <v-text-field :rules="monthPlanRules" label="Julio" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Agosto" />
+            <v-text-field :rules="monthPlanRules" label="Agosto" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Septiembre" />
+            <v-text-field :rules="monthPlanRules" label="Septiembre" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Octubre" />
+            <v-text-field :rules="monthPlanRules" label="Octubre" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Noviembre" />
+            <v-text-field :rules="monthPlanRules" label="Noviembre" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Diciembre" />
+            <v-text-field :rules="monthPlanRules" label="Diciembre" />
           </v-flex>
 
           <v-flex xs12 text-xs-right>
@@ -68,7 +68,9 @@ export default {
       alimentationSelect: "Simple",
       alimentationItems: ["Simple", "Doble"],
       metrageSelect: "Alta",
-      metrageItems: ["Baja", "Alta"]
+      metrageItems: ["Baja", "Alta"],
+      yearPlanRules: [v => !!v || "Entre el plan de este mes"],
+      monthPlanRules: [v => !!v || "Entre el plan de este mes"]
     };
   },
   computed: {
