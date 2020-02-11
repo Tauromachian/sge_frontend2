@@ -4,59 +4,59 @@
       <v-container py-0>
         <v-layout wrap>
           <v-flex xs12 md6>
-            <v-text-field label="Nombre del Servicio" v-model="serviceName" />
+            <v-text-field
+              label="Nombre del Servicio"
+              v-model="serviceName"
+              :rules="serviceNameRules"
+            />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Codigo del servicio" v-model="serviceCode" />
+            <v-text-field label="Codigo del servicio" v-model="serviceCode" :rules="serviceCodeRules"/>
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="CRF" v-model="crf" />
+            <v-text-field label="CRF" v-model="crf" :rules="crfRules"/>
           </v-flex>
           <v-flex xs6 md3>
             <v-switch label="Exclusivo" v-model="exclusive" />
           </v-flex>
           <v-flex xs6 md3>
             <v-subheader class="pl-0">Turnos</v-subheader>
-            <v-slider v-model="turn" :thumb-size="24" thumb-label="always" :max="3" :min="1">
-              <template v-slot:append>
-                <v-text-field
-                  v-model="turn"
-                  class="mt-0 pt-0"
-                  hide-details
-                  single-line
-                  type="number"
-                  style="width: 60px"
-                ></v-text-field>
-              </template>
-            </v-slider>
+            <v-slider v-model="turn" :thumb-size="24" thumb-label="always" :max="3" :min="1"></v-slider>
           </v-flex>
           <v-flex xs12 md6>
             <v-select label="Tipo de tarifa" v-model="tarifType" :items="tarifItems" />
           </v-flex>
+
+          <v-flex md12 class="pt-0 pb-0"></v-flex>
+
           <v-flex xs12 md4>
             <v-select label="Alimentacion" v-model="alimentation" :items="alimentationItems" />
           </v-flex>
           <v-flex xs12 md4>
-            <v-text-field label="Demanda Contratada (kW)" v-model="hiredDemand" />
+            <v-text-field label="Demanda Contratada (kW)" v-model="hiredDemand" :rules="hiredDemandRules"/>
           </v-flex>
           <v-flex xs12 md4>
-            <v-text-field label="Numero del metro" v-model="meterNumber" />
+            <v-text-field label="Numero del metro" v-model="meterNumber" :rules="meterNumberRules"/>
           </v-flex>
 
           <v-flex md12></v-flex>
 
-          <v-flex xs12 md4>
+          <v-flex xs12 md2>
             <v-select label="Metraje" v-model="metrage" :items="metrageItems" />
           </v-flex>
           <v-flex xs12 md4 v-if="metrage == 'Alta'">
-            <v-text-field label="Capacidad" v-model="capacity" />
+            <v-text-field label="Capacidad" v-model="capacity" :rules="capacityRules"/>
           </v-flex>
-          <v-flex xs12 md4 v-else>
-            <v-select
-              label="Cantidad de transformadores"
-              :items="transformersItems"
+          <v-flex xs12 md2 v-else>
+            <v-subheader class="pl-0">Cantidad de transformadores</v-subheader>
+
+            <v-slider
               v-model="transformersAmount"
-            />
+              :thumb-size="24"
+              thumb-label="always"
+              :max="3"
+              :min="1"
+            ></v-slider>
           </v-flex>
 
           <v-flex md12 class="pt-0 pb-0"></v-flex>
@@ -94,7 +94,13 @@ export default {
       metrageItems: ["Baja", "Alta"],
       tarifItems: ["MA1", "MC1", "B1"],
       transformersAmount: 0,
-      transformersItems: [1, 2, 3]
+      transformersItems: [1, 2, 3],
+      serviceNameRules: [v => !!v || "El nombre del servicio falta"],
+      serviceCodeRules: [v => !!v || "El codigo del servicio falta"],
+      crfRules: [v => !!v || "El codigo del servicio falta"],
+      hiredDemandRules: [v => !!v || "La demanda contratada falta"],
+      meterNumberRules: [v => !!v || "El numero del metro falta"],
+      capacityRules: [v => !!v || "La capacidad falta"],
     };
   },
   watch: {
