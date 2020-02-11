@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field label="Capacidad (kVA)" v-model="serviceName" />
+    <v-text-field label="Capacidad (kVA)" v-model="capacity" :rules="capacityRules"/>
     <v-select label="Tipo" :items="transformersItems" v-model="transformerType" />
   </div>
 </template>
@@ -11,7 +11,9 @@ export default {
   data: function() {
     return {
       transformerType: "",
-      transformersItems: ["Monofasico", "Trifasico"]
+      transformersItems: ["Monofasico", "Trifasico"],
+      capacity: "",
+      capacityRules: [v => !!v || "La capacidad falta"]
     };
   }
 };
