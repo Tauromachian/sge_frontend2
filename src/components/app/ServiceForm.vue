@@ -12,15 +12,26 @@
           <v-flex xs12 md6>
             <v-text-field label="CRF" v-model="crf" />
           </v-flex>
-          <v-flex xs12 md3>
+          <v-flex xs6 md3>
             <v-switch label="Exclusivo" v-model="exclusive" />
           </v-flex>
-          <v-flex xs12 md3>
+          <v-flex xs6 md3>
             <v-subheader class="pl-0">Turnos</v-subheader>
-            <v-slider v-model="turn" :thumb-size="24" thumb-label="always" :max="3" :min="1"></v-slider>
+            <v-slider v-model="turn" :thumb-size="24" thumb-label="always" :max="3" :min="1">
+              <template v-slot:append>
+                <v-text-field
+                  v-model="turn"
+                  class="mt-0 pt-0"
+                  hide-details
+                  single-line
+                  type="number"
+                  style="width: 60px"
+                ></v-text-field>
+              </template>
+            </v-slider>
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Tipo de tarifa" v-model="tarifType" />
+            <v-select label="Tipo de tarifa" v-model="tarifType" :items="tarifItems" />
           </v-flex>
           <v-flex xs12 md4>
             <v-select label="Alimentacion" v-model="alimentation" :items="alimentationItems" />
@@ -31,6 +42,9 @@
           <v-flex xs12 md4>
             <v-text-field label="Numero del metro" v-model="meterNumber" />
           </v-flex>
+
+          <v-flex md12></v-flex>
+
           <v-flex xs12 md4>
             <v-select label="Metraje" v-model="metrage" :items="metrageItems" />
           </v-flex>
@@ -38,8 +52,14 @@
             <v-text-field label="Capacidad" v-model="capacity" />
           </v-flex>
           <v-flex xs12 md4 v-else>
-            <v-select label="Cantidad de transformadores" :items="transformersItems" v-model="transformersAmount"/>
+            <v-select
+              label="Cantidad de transformadores"
+              :items="transformersItems"
+              v-model="transformersAmount"
+            />
           </v-flex>
+
+          <v-flex md12 class="pt-0 pb-0"></v-flex>
 
           <v-flex xs12 md4 v-for="i in transformersAmount" :key="i">
             <app-transformer-form></app-transformer-form>
@@ -64,7 +84,7 @@ export default {
       crf: "",
       exclusive: false,
       tarifType: "",
-      turn: "",
+      turn: 1,
       hiredDemand: "",
       meterNumber: "",
       alimentation: "Simple",
@@ -72,6 +92,7 @@ export default {
       capacity: "",
       alimentationItems: ["Simple", "Doble"],
       metrageItems: ["Baja", "Alta"],
+      tarifItems: ["MA1", "MC1", "B1"],
       transformersAmount: 0,
       transformersItems: [1, 2, 3]
     };
