@@ -1,6 +1,6 @@
 <template>
   <material-card color="primary" title="Formulario de servicio" text="Inserta un nuevo servicio">
-    <v-form>
+    <v-form ref="form">
       <v-container py-0>
         <v-layout wrap>
           <v-flex xs12 md6>
@@ -66,7 +66,7 @@
           </v-flex>
 
           <v-flex xs12 text-xs-right>
-            <v-btn class="mx-0 font-weight-light" color="primary">Insertar</v-btn>
+            <v-btn class="mx-0 font-weight-light" color="primary" @click="validate">Insertar</v-btn>
           </v-flex>
         </v-layout>
       </v-container>
@@ -102,6 +102,11 @@ export default {
       meterNumberRules: [v => !!v || "El numero del metro falta"],
       capacityRules: [v => !!v || "La capacidad falta"],
     };
+  },
+  methods: {
+    validate: function () {
+      this.$refs.form.validate();
+    }
   },
   watch: {
     metrage: function(val) {
