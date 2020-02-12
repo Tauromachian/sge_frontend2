@@ -1,10 +1,10 @@
 <template>
   <material-card color="primary" title="Formulario de planes" text="Inserta un nuevo plan">
-    <v-form>
+    <v-form ref="form">
       <v-container py-0>
         <v-layout wrap>
           <v-flex xs12 md6>
-            <v-autocomplete label="Servicio" :items="services" />
+            <v-autocomplete label="Servicio" :items="services" :rules="serviceRules"/>
           </v-flex>
           <v-flex xs12 md6>
             <v-text-field :rules="yearPlanRules" label="Año" />
@@ -50,7 +50,7 @@
           </v-flex>
 
           <v-flex xs12 text-xs-right>
-            <v-btn class="mx-0 font-weight-light" color="primary">Insertar</v-btn>
+            <v-btn class="mx-0 font-weight-light" color="primary" @click="validate">Insertar</v-btn>
           </v-flex>
         </v-layout>
       </v-container>
@@ -69,9 +69,15 @@ export default {
       alimentationItems: ["Simple", "Doble"],
       metrageSelect: "Alta",
       metrageItems: ["Baja", "Alta"],
+      serviceRules: [v => !!v|| "Entre un servicio"],
       yearPlanRules: [v => !!v || "Entre el plan de este mes"],
       monthPlanRules: [v => !!v || "Entre el plan de este mes"]
     };
+  },
+  methods: {
+    validate: function () {
+      this.$refs.form.validate();
+    }
   },
   computed: {
     ...mapState("app", ["services"])
