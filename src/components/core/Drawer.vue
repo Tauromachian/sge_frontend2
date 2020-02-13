@@ -5,7 +5,7 @@
         <v-img :src="logo" height="34" contain />
       </v-list-item-avatar>
       <v-list-item-title class="title">SGE</v-list-item-title>
-      <v-btn icon @click.stop="mini = !mini">
+      <v-btn icon @click="mini = !mini">
         <v-icon>mdi-chevron-left</v-icon>
       </v-btn>
     </v-list-item>
@@ -63,6 +63,16 @@ export default {
       }
     ]
   }),
+  mounted() {
+    if(localStorage.mini){
+      localStorage.mini === "true" ? this.mini = true : this.mini = false;
+    }
+  },
+  watch: {
+    mini(toggleMini){
+      localStorage.mini = toggleMini;
+    }
+  },
   computed: {
     ...mapState("app", ["image", "color"]),
     inputValue: {
@@ -79,7 +89,10 @@ export default {
   },
 
   methods: {
-    ...mapMutations("app", ["setDrawer", "toggleDrawer"])
+    ...mapMutations("app", ["setDrawer", "toggleDrawer"]),
+    // toggleMini(){
+    //   this.mini = !this.mini;
+    // }
   }
 };
 </script>
