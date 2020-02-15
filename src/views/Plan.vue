@@ -12,7 +12,7 @@
               <v-icon class="mr-2">mdi-code-tags</v-icon>Administrar
             </v-tab>
             <v-tab-item>
-              <app-plan-form></app-plan-form>
+              <app-plan-form class="ml-10 mr-10"></app-plan-form>
             </v-tab-item>
             <v-tab-item>
               <app-plans-table></app-plans-table>

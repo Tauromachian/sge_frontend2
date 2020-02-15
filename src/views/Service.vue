@@ -16,7 +16,7 @@
               <v-icon class="mr-2">mdi-file-table</v-icon>Administrar
             </v-tab>
             <v-tab-item>
-              <app-service-form></app-service-form>
+              <app-service-form class="ml-10 mr-10"></app-service-form>
             </v-tab-item>
             <v-tab-item>
               <app-service-table></app-service-table>
