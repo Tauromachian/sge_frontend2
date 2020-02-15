@@ -2,7 +2,7 @@
   <v-app-bar app id="core-toolbar" flat style="background: #eee;">
     <div class="v-toolbar-title">
       <v-toolbar-title>
-        <v-btn class="default v-btn--simple" dark icon @click.stop="onClickBtn">
+        <v-btn class="default v-btn--simple" dark icon @click="toggleDrawer">
           <v-icon>mdi-view-list</v-icon>
         </v-btn>
         {{ title }}
@@ -58,11 +58,20 @@ export default {
       this.title = val.name;
     }
   },
-
+  mounted() {
+    if (localStorage.drawer) {
+      if (localStorage.drawer === "true") {
+        this.setDrawer(true);
+      } else {
+        this.setDrawer(false);
+      }
+    }
+  },
   methods: {
-    ...mapMutations("app", ["setDrawer", "toggleDrawer"]),
-    onClickBtn() {
+    ...mapMutations("app", ["setDrawer"]),
+    toggleDrawer() {
       this.setDrawer(!this.$store.state.app.drawer);
+      localStorage.drawer = this.$store.state.app.drawer;
     }
   }
 };
