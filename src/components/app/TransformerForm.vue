@@ -10,8 +10,8 @@ export default {
   name: "TransformerForm",
   data: function() {
     return {
-      transformerType: "",
-      transformersItems: ["Monofasico", "Trifasico"],
+      transformerType: "Monofásico",
+      transformersItems: ["Monofásico", "Trifásico"],
       capacity: "",
       capacityRules: [v => !!v || "La capacidad falta"]
     };
