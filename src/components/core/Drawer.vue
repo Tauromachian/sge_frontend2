@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="inputValue" app dark :color="color" :mini-variant.sync="mini">
+  <v-navigation-drawer v-model="navDrawer" app dark :color="color" :mini-variant.sync="mini">
     <v-list-item>
       <v-list-item-avatar color="white">
         <v-img :src="logo" height="34" contain />
@@ -38,6 +38,7 @@ export default {
   },
   data: () => ({
     logo: "logo.png",
+    navDrawer: false,
     mini: false,
     links: [
       {
@@ -47,13 +48,13 @@ export default {
       },
       {
         to: "/plan-form",
-        icon: "mdi-account",
+        icon: "mdi-clipboard-outline",
         text: "Planes"
       },
       {
         to: "/table-list",
         icon: "mdi-clipboard-outline",
-        text: "Transformadores"
+        text: "Consumos"
       },
       {
         to: "/user-profile",
@@ -64,35 +65,28 @@ export default {
     ]
   }),
   mounted() {
-    if(localStorage.mini){
-      localStorage.mini === "true" ? this.mini = true : this.mini = false;
+    if (localStorage.mini) {
+      localStorage.mini === "true" ? (this.mini = true) : (this.mini = false);
+    }
+    if (localStorage.drawer) {
+      if (localStorage.drawer === "true") {
+        this.navDrawer = true;
+        
+      } else {
+        this.navDrawer = false;
+      }
     }
   },
   watch: {
-    mini(toggleMini){
+    mini(toggleMini) {
       localStorage.mini = toggleMini;
+    },
+    drawer(drawerStateToggled) {
+      this.navDrawer = drawerStateToggled;
     }
   },
   computed: {
-    ...mapState("app", ["image", "color"]),
-    inputValue: {
-      get() {
-        return this.$store.state.app.drawer;
-      },
-      set(val) {
-        this.setDrawer(val);
-      }
-    },
-    items() {
-      return this.$t("Layout.View.items");
-    }
+    ...mapState("app", ["image", "color", "drawer"]),
   },
-
-  methods: {
-    ...mapMutations("app", ["setDrawer", "toggleDrawer"]),
-    // toggleMini(){
-    //   this.mini = !this.mini;
-    // }
-  }
 };
 </script>
