@@ -21,6 +21,11 @@ export default [
     view: 'UserProfile'
   },
   {
+    path: '/iot-platform',
+    name: 'IOT Platform',
+    view: 'IotPlatform'
+  },
+  {
     path: '/table-list',
     name: 'Table List',
     view: 'TableList'
