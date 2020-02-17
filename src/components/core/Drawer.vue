@@ -27,7 +27,7 @@
 
 <script>
 // Utilities
-import { mapMutations, mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   props: {
@@ -61,6 +61,11 @@ export default {
 
         icon: "mdi-account",
         text: "Usuarios"
+      },
+      {
+        to: "/iot-platform",
+        icon: "mdi-account",
+        text: "Plataform de IOT"
       }
     ]
   }),
