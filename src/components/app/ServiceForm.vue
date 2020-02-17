@@ -85,6 +85,8 @@
 </template>
 
 <script>
+import { isNumber, isLettersWithBlankSpaces } from "@/utils/regex";
+
 export default {
   name: "ServiceForm",
   data: function() {
@@ -105,11 +107,20 @@ export default {
       tarifItems: ["M1-A", "M1-C", "B1"],
       transformersAmount: 0,
       transformersItems: [1, 2, 3],
-      serviceNameRules: [v => !!v || "El nombre del servicio falta"],
+      serviceNameRules: [
+        v => !!v || "El nombre del servicio falta",
+        v => isLettersWithBlankSpaces(v) || "Caracteres no permitidos"
+      ],
       serviceCodeRules: [v => !!v || "El codigo del servicio falta"],
       crfRules: [v => !!v || "El CRF falta"],
-      hiredDemandRules: [v => !!v || "La demanda contratada falta"],
-      meterNumberRules: [v => !!v || "El numero del metro falta"],
+      hiredDemandRules: [
+        v => !!v || "La demanda contratada falta",
+        v => isNumber(v) || "La Demanda contratada es un numero"
+      ],
+      meterNumberRules: [
+        v => !!v || "El numero del metro falta",
+        v => isNumber(v) || "Introdujo al menos un caracter incorrecto aqui"
+      ],
       capacityRules: [v => !!v || "La capacidad falta"]
     };
   },

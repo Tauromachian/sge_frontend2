@@ -3,9 +3,8 @@
     <v-form ref="form">
       <v-container py-0>
         <v-layout wrap>
-          
           <v-flex xs12 md6>
-            <v-text-field  label="Año" />
+            <v-text-field label="Año" />
           </v-flex>
 
           <v-flex xs12 md6>
@@ -59,6 +58,7 @@
 
 <script>
 import { mapState } from "vuex";
+import { isNumber } from "@/utils/regex";
 
 export default {
   name: "ServiceForm",
@@ -68,13 +68,22 @@ export default {
       alimentationItems: ["Simple", "Doble"],
       metrageSelect: "Alta",
       metrageItems: ["Baja", "Alta"],
-      serviceRules: [v => !!v|| "Entre un servicio"],
-      yearPlanRules: [v => !!v || "Entre el total para el año"],
-      monthPlanRules: [v => !!v || "Entre el plan de este mes"]
+      serviceRules: [
+        v => !!v || "Entre un servicio",
+        v => isNumber(v) || "Por favor entre un numero aqui"
+      ],
+      yearPlanRules: [
+        v => !!v || "Entre el total para el año",
+        v => isNumber(v) || "Por favor entre un numero aqui"
+      ],
+      monthPlanRules: [
+        v => !!v || "Entre el plan de este mes",
+        v => isNumber(v) || "Por favor entre un numero aqui"
+      ]
     };
   },
   methods: {
-    validate: function () {
+    validate: function() {
       this.$refs.form.validate();
     }
   },
