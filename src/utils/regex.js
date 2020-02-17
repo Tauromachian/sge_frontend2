@@ -1,15 +1,27 @@
-const isStringNumberRegex = /^[0-9]+$/;
-const isStringRegex = /^([a-zA-Z])+$/;
-const isStringWithBlankSpacesRegex = /^([a-zA-Z ])+$/;
+const numberRegex = /^[0-9]+$/;
+const lettersRegex = /^([a-zA-Z])+$/;
+const lettersBlankSpacesRegex = /^([a-zA-Z ])+$/;
+const numberLettersBlankSpacesRegex = /^([0-9a-zA-Z ])+$/;
 
-const isNumber = (string) => {
-  return isStringNumberRegex.test(string);
-}
+const isNumber = string => {
+  return numberRegex.test(string);
+};
 
-const isString = (string) => {
-  return isStringRegex.test(string);
-}
+const isOnlyLetters = string => {
+  return lettersRegex.test(string);
+};
 
-const isStringWithBlankSpaces = (string) => {
-  return isStringWithBlankSpacesRegex.test(string);
-}
+const isLettersWithBlankSpaces = string => {
+  return lettersBlankSpacesRegex.test(string);
+};
+
+const isNumberAndLettersWithWhiteSpaces = string => {
+  return numberLettersBlankSpacesRegex.test(string);
+};
+
+module.exports = {
+  isNumber,
+  isOnlyLetters,
+  isLettersWithBlankSpaces,
+  isNumberAndLettersWithWhiteSpaces
+};
