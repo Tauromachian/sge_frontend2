@@ -121,7 +121,10 @@ export default {
         v => !!v || "El numero del metro falta",
         v => isNumber(v) || "Introdujo al menos un caracter incorrecto aqui"
       ],
-      capacityRules: [v => !!v || "La capacidad falta"]
+      capacityRules: [
+        v => !!v || "La capacidad falta",
+        v => isNumber(v) || "La capacidad es un numero"
+      ]
     };
   },
   methods: {
