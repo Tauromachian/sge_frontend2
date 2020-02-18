@@ -58,10 +58,6 @@
     @include button-color($gray-light);
   }
 
-  &.primary {
-    @include button-color($brand-primary);
-  }
-
   &.warning {
     @include button-color($brand-warning);
   }
