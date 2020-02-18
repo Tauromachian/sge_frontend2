@@ -3,6 +3,9 @@
     <v-form ref="form">
       <v-container py-0>
         <v-layout wrap>
+          <v-flex xs12 md4>
+            <v-text-field label="Numero del metro" v-model="meterNumber" :rules="meterNumberRules" />
+          </v-flex>
           <v-flex xs12 md6>
             <v-text-field
               label="Nombre del Servicio"
@@ -10,6 +13,11 @@
               :rules="serviceNameRules"
             />
           </v-flex>
+
+          <v-flex xs12 md2>
+            <v-select label="Tipo de servicio" v-model="serviceType" :items="serviceTypeItems" />
+          </v-flex>
+
           <v-flex xs12 md3>
             <v-text-field
               label="Codigo del servicio"
@@ -38,10 +46,6 @@
 
           <v-flex xs12 md3>
             <v-select label="Alimentacion" v-model="alimentation" :items="alimentationItems" />
-          </v-flex>
-
-          <v-flex xs12 md4>
-            <v-text-field label="Numero del metro" v-model="meterNumber" :rules="meterNumberRules" />
           </v-flex>
 
           <v-flex xs6 md2>
@@ -76,7 +80,7 @@
           </v-flex>
 
           <v-flex xs12 text-xs-right>
-            <v-btn class="mx-0 font-weight-light" color="primary" @click="validate">Insertar</v-btn>
+            <v-btn class="mx-0 font-weight-light btn-test" color="primary" @click="validate">Insertar</v-btn>
           </v-flex>
         </v-layout>
       </v-container>
@@ -93,6 +97,7 @@ export default {
     return {
       serviceName: "",
       serviceCode: "",
+      serviceType: "",
       crf: "",
       exclusive: false,
       tarifType: "M1-A",
@@ -102,6 +107,7 @@ export default {
       alimentation: "Simple",
       metrage: "Alta",
       capacity: "",
+      serviceTypeItems: ["Monofásico 110 V", "Monofásico 220 V", "Trifásico 220 V", "Trifásico 480 V"],
       alimentationItems: ["Simple", "Doble"],
       metrageItems: ["Baja", "Alta"],
       tarifItems: ["M1-A", "M1-C", "B1"],
