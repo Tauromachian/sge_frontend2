@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-text-field label="Capacidad (kVA)" v-model="capacity" :rules="capacityRules"/>
     <v-select label="Tipo" :items="transformersItems" v-model="transformerType" />
+    <v-text-field label="Capacidad (kVA)" v-model="capacity" :rules="capacityRules"/>
   </div>
 </template>
 
