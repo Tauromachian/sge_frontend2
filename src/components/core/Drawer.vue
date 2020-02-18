@@ -63,9 +63,9 @@ export default {
         text: "Usuarios"
       },
       {
-        to: "/iot-platform",
-        icon: "mdi-account",
-        text: "Plataform de IOT"
+        to: "/monitorization",
+        icon: "mdi-clock",
+        text: "Monitorización"
       }
     ]
   }),
