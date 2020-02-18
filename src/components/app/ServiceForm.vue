@@ -13,6 +13,7 @@
               :rules="serviceNameRules"
             />
           </v-flex>
+          
 
           <v-flex xs12 md2>
             <v-select label="Tipo de servicio" v-model="serviceType" :items="serviceTypeItems" />
@@ -41,7 +42,19 @@
           </v-flex>
 
           <v-flex xs12 md3>
-            <v-select label="Tipo de tarifa" v-model="tarifType" :items="tarifItems" />
+            <p>Tipo de tarifa</p>
+            <v-btn-toggle group v-model="tarifType" color="primary">
+              <v-btn value="B1">
+                B1
+              </v-btn>
+              <v-btn value="M1-A">
+                M1-A
+              </v-btn>
+              <v-btn value="M1-C">
+                M1-C
+              </v-btn>
+              
+            </v-btn-toggle>
           </v-flex>
 
           <v-flex xs12 md3>
@@ -80,7 +93,11 @@
           </v-flex>
 
           <v-flex xs12 text-xs-right>
-            <v-btn class="mx-0 font-weight-light btn-test" color="primary" @click="validate">Insertar</v-btn>
+            <v-btn
+              class="mx-0 font-weight-light btn-test"
+              color="primary"
+              @click="validate"
+            >Insertar</v-btn>
           </v-flex>
         </v-layout>
       </v-container>
@@ -107,10 +124,14 @@ export default {
       alimentation: "Simple",
       metrage: "Alta",
       capacity: "",
-      serviceTypeItems: ["Monofásico 110 V", "Monofásico 220 V", "Trifásico 220 V", "Trifásico 480 V"],
+      serviceTypeItems: [
+        "Monofásico 110 V",
+        "Monofásico 220 V",
+        "Trifásico 220 V",
+        "Trifásico 480 V"
+      ],
       alimentationItems: ["Simple", "Doble"],
       metrageItems: ["Baja", "Alta"],
-      tarifItems: ["M1-A", "M1-C", "B1"],
       transformersAmount: 0,
       transformersItems: [1, 2, 3],
       serviceNameRules: [
