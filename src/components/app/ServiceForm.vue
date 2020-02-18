@@ -58,7 +58,16 @@
           </v-flex>
 
           <v-flex xs12 md3>
-            <v-select label="Alimentacion" v-model="alimentation" :items="alimentationItems" />
+            <p>Alimentación</p>
+            <v-btn-toggle group v-model="alimentation" color="primary">
+              <v-btn value="Simple">
+                Simple
+              </v-btn>
+              <v-btn value="Doble">
+                Doble
+              </v-btn>
+              
+            </v-btn-toggle>
           </v-flex>
 
           <v-flex xs6 md2>
@@ -130,7 +139,6 @@ export default {
         "Trifásico 220 V",
         "Trifásico 480 V"
       ],
-      alimentationItems: ["Simple", "Doble"],
       metrageItems: ["Baja", "Alta"],
       transformersAmount: 0,
       transformersItems: [1, 2, 3],
