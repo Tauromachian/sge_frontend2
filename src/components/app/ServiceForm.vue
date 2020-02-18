@@ -43,7 +43,7 @@
 
           <v-flex xs12 md3>
             <p>Tipo de tarifa</p>
-            <v-btn-toggle group v-model="tarifType" color="primary">
+            <v-btn-toggle group mandatory v-model="tarifType" color="primary">
               <v-btn value="B1">
                 B1
               </v-btn>
@@ -59,7 +59,7 @@
 
           <v-flex xs12 md3>
             <p>Alimentación</p>
-            <v-btn-toggle group v-model="alimentation" color="primary">
+            <v-btn-toggle group mandatory v-model="alimentation" color="primary">
               <v-btn value="Simple">
                 Simple
               </v-btn>
@@ -76,9 +76,18 @@
           </v-flex>
 
           <v-flex md12></v-flex>
-
+          
           <v-flex xs12 md2>
-            <v-select label="Metraje" v-model="metrage" :items="metrageItems" />
+            <p>Metraje</p>
+            <v-btn-toggle group mandatory v-model="metrage" color="primary">
+              <v-btn value="Alta">
+                Alta
+              </v-btn>
+              <v-btn value="Baja">
+                Baja
+              </v-btn>
+              
+            </v-btn-toggle>
           </v-flex>
           <v-flex xs12 md4 v-if="metrage == 'Alta'">
             <v-text-field label="Capacidad (kVA)" v-model="capacity" :rules="capacityRules" />
