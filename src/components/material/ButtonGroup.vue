@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ label }}</p>
+    <label>{{ label }}</label>
     <v-btn-toggle group mandatory v-model="selection" color="primary">
       <slot></slot>
     </v-btn-toggle>
