@@ -42,7 +42,7 @@
 
           <v-flex xs12 md3>
             <material-button-group v-model="tarifType" label="Tipo de tarifa">
-              <v-btn value="B1">B1</v-btn>
+              <v-btn class="ml-0" value="B1">B1</v-btn>
               <v-btn value="M1-A">M1-A</v-btn>
               <v-btn value="M1-C">M1-C</v-btn>
             </material-button-group>
@@ -50,7 +50,7 @@
 
           <v-flex xs12 md3>
             <material-button-group v-model="alimentation" label="Alimentación">
-              <v-btn value="Simple">Simple</v-btn>
+              <v-btn class="ml-0" value="Simple">Simple</v-btn>
               <v-btn value="Doble">Doble</v-btn>
             </material-button-group>
           </v-flex>
@@ -64,7 +64,7 @@
 
           <v-flex xs12 md2>
             <material-button-group v-model="metrage" label="Metraje">
-              <v-btn value="Alta">Alta</v-btn>
+              <v-btn class="ml-0" value="Alta">Alta</v-btn>
               <v-btn value="Baja">Baja</v-btn>
             </material-button-group>
           </v-flex>
