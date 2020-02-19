@@ -1,19 +1,26 @@
 <template>
   <div>
-    <v-select label="Tipo" :items="transformersItems" v-model="transformerType" />
-    <v-text-field label="Capacidad (kVA)" v-model="capacity" :rules="capacityRules"/>
+    <v-btn-toggle group mandatory v-model="tarifType" color="primary">
+      <v-btn value="Monofásico">Monofásico</v-btn>
+      <v-btn value="Trifásico">Trifásico</v-btn>
+    </v-btn-toggle>
+    <v-text-field label="Capacidad (kVA)" v-model="capacity" :rules="capacityRules" />
   </div>
 </template>
 
 <script>
+import { isNumber } from "@/utils/regex";
+
 export default {
   name: "TransformerForm",
   data: function() {
     return {
       transformerType: "Monofásico",
-      transformersItems: ["Monofásico", "Trifásico"],
       capacity: "",
-      capacityRules: [v => !!v || "La capacidad falta"]
+      capacityRules: [
+        v => !!v || "La capacidad falta",
+        v => isNumber(v) || "Introduzca un numero aqui"
+      ]
     };
   }
 };
