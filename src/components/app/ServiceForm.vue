@@ -13,7 +13,6 @@
               :rules="serviceNameRules"
             />
           </v-flex>
-          
 
           <v-flex xs12 md2>
             <v-select label="Tipo de servicio" v-model="serviceType" :items="serviceTypeItems" />
@@ -42,32 +41,18 @@
           </v-flex>
 
           <v-flex xs12 md3>
-            <p>Tipo de tarifa</p>
-            <v-btn-toggle group mandatory v-model="tarifType" color="primary">
-              <v-btn value="B1">
-                B1
-              </v-btn>
-              <v-btn value="M1-A">
-                M1-A
-              </v-btn>
-              <v-btn value="M1-C">
-                M1-C
-              </v-btn>
-              
-            </v-btn-toggle>
+            <material-button-group v-model="tarifType" label="Tipo de tarifa">
+              <v-btn value="B1">B1</v-btn>
+              <v-btn value="M1-A">M1-A</v-btn>
+              <v-btn value="M1-C">M1-C</v-btn>
+            </material-button-group>
           </v-flex>
 
           <v-flex xs12 md3>
-            <p>Alimentación</p>
-            <v-btn-toggle group mandatory v-model="alimentation" color="primary">
-              <v-btn value="Simple">
-                Simple
-              </v-btn>
-              <v-btn value="Doble">
-                Doble
-              </v-btn>
-              
-            </v-btn-toggle>
+            <material-button-group v-model="alimentation" label="Alimentación">
+              <v-btn value="Simple">Simple</v-btn>
+              <v-btn value="Doble">Doble</v-btn>
+            </material-button-group>
           </v-flex>
 
           <v-flex xs6 md2>
@@ -76,18 +61,12 @@
           </v-flex>
 
           <v-flex md12></v-flex>
-          
+
           <v-flex xs12 md2>
-            <p>Metraje</p>
-            <v-btn-toggle group mandatory v-model="metrage" color="primary">
-              <v-btn value="Alta">
-                Alta
-              </v-btn>
-              <v-btn value="Baja">
-                Baja
-              </v-btn>
-              
-            </v-btn-toggle>
+            <material-button-group v-model="metrage" label="Metraje">
+              <v-btn value="Alta">Alta</v-btn>
+              <v-btn value="Baja">Baja</v-btn>
+            </material-button-group>
           </v-flex>
           <v-flex xs12 md4 v-if="metrage == 'Alta'">
             <v-text-field label="Capacidad (kVA)" v-model="capacity" :rules="capacityRules" />
