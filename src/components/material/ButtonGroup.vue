@@ -1,8 +1,8 @@
 <template>
   <div>
     <p>{{ label }}</p>
-    <v-btn-toggle>
-      <v-btn v-for="(button, index) in buttons" :key="index"> {{ button }}</v-btn>
+    <v-btn-toggle group mandatory v-model="selection" color="primary">
+      <slot></slot>
     </v-btn-toggle>
   </div>
 </template>
@@ -11,8 +11,18 @@
 export default {
   name: "ButtonGroup",
   props: {
-    label: String,
-    buttons: Array
+    value: String,
+    label: String
+  },
+  computed: {
+    selection: {
+      get() {
+        return this.value;
+      },
+      set(selection) {
+        this.$emit("input", selection);
+      }
+    }
   }
 };
 </script>
