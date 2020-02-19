@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn-toggle group mandatory v-model="tarifType" color="primary">
+    <v-btn-toggle group mandatory v-model="transformerType" color="primary">
       <v-btn value="Monofásico">Monofásico</v-btn>
       <v-btn value="Trifásico">Trifásico</v-btn>
     </v-btn-toggle>
