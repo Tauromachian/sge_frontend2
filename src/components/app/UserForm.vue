@@ -29,7 +29,7 @@
           </v-flex>
 
           <v-flex xs12 text-xs-right>
-            <v-btn class="mx-0 font-weight-light" color="primary">Agregar</v-btn>
+            <v-btn class="mx-0 font-weight-light" color="primary" @click="validate">Agregar</v-btn>
           </v-flex>
         </v-layout>
       </v-container>
@@ -74,6 +74,11 @@ export default {
         v => isNumberAndLettersWithWhiteSpaces(v) || "Caracteres no permitidos"
       ]
     };
+  },
+  methods: {
+    validate: function() {
+      this.$refs.form.validate();
+    }
   }
 };
 </script>
