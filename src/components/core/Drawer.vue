@@ -53,7 +53,7 @@ export default {
       },
       {
         to: "/table-list",
-        icon: "mdi-clipboard-outline",
+        icon: "mdi-chart-bar-stacked ",
         text: "Consumos"
       },
       {
