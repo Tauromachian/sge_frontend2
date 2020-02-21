@@ -1,32 +1,6 @@
 <template>
   <v-container fill-height fluid grid-list-xl>
     <v-layout justify-center wrap>
-      <v-flex xs12 md8>
-        <material-card color="green" title="Agregar usuario" text="Inserte un nuevo usuario">
-          <v-form>
-            <v-container py-0>
-              <v-layout wrap>
-                <v-flex xs12 md6>
-                  <v-text-field label="First Name"  />
-                </v-flex>
-                <v-flex xs12 md6>
-                  <v-text-field label="Last Name"  />
-                </v-flex>
-                <v-flex xs12 md12>
-                  <v-text-field label="Email Address"  />
-                </v-flex>
-                <v-flex xs12 md6>
-                  <v-text-field label="Tipo de usuario"  />
-                </v-flex>
-                
-                <v-flex xs12 text-xs-right>
-                  <v-btn class="mx-0 font-weight-light" color="success">Update Profile</v-btn>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-form>
-        </material-card>
-      </v-flex>
       <v-flex xs12 md4>
         <material-card class="v-card-profile">
           <v-avatar slot="offset" class="mx-auto d-block" size="130">
@@ -42,12 +16,81 @@
           </v-card-text>
         </material-card>
       </v-flex>
+      <v-flex xs12 md8>
+        <app-data-table :headers="headers" :items="desserts">
+
+        </app-data-table>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
 export default {
-  //
+  name: "UserProfile",
+  data(){
+    return{
+      headers: [
+        {
+          text: "Dessert (100g serving)",
+          align: "left",
+          sortable: false,
+          value: "name"
+        },
+        { text: "Name", value: "name" },
+        { text: "Actions", value: "action" }
+      ],
+    desserts: [
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          fat: 6.0,
+          carbs: 24,
+          protein: 4.0,
+          iron: "1%"
+        },
+        {
+          name: "Ice cream sandwich",
+          calories: 237,
+          fat: 9.0,
+          carbs: 37,
+          protein: 4.3,
+          iron: "1%"
+        },
+        {
+          name: "Eclair",
+          calories: 262,
+          fat: 16.0,
+          carbs: 23,
+          protein: 6.0,
+          iron: "7%"
+        },
+        {
+          name: "Cupcake",
+          calories: 305,
+          fat: 3.7,
+          carbs: 67,
+          protein: 4.3,
+          iron: "8%"
+        },
+        {
+          name: "Gingerbread",
+          calories: 356,
+          fat: 16.0,
+          carbs: 49,
+          protein: 3.9,
+          iron: "16%"
+        },
+        {
+          name: "Jelly bean",
+          calories: 375,
+          fat: 0.0,
+          carbs: 94,
+          protein: 0.0,
+          iron: "0%"
+        }
+      ]
+    }
+  }
 };
 </script>
