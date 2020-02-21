@@ -1,7 +1,7 @@
 <template>
   <v-container fill-height fluid grid-list-xl>
-    <v-layout justify-center wrap>
-      <v-flex xs12 md4>
+    <v-row>
+      <v-col md="4">
         <material-card class="v-card-profile">
           <v-avatar slot="offset" class="mx-auto d-block" size="130">
             <img src="https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg" />
@@ -15,11 +15,45 @@
             <v-btn color="success" rounded class="font-weight-light">Follow</v-btn>
           </v-card-text>
         </material-card>
-      </v-flex>
-      <v-flex xs12 md8>
-        <app-data-table :headers="headers" :items="desserts"></app-data-table>
-      </v-flex>
-    </v-layout>
+      </v-col>
+      <v-col md="8">
+        <v-col>
+          <v-card>
+            <v-card-title>Información de contacto</v-card-title>
+            <v-row justify="center">
+              <v-col md="3">Nombre</v-col>
+              <v-col md="8">{{ infoContact.name }}</v-col>
+            </v-row>
+            <v-row justify="center">
+              <v-col md="3">Email</v-col>
+              <v-col md="8">{{ infoContact.email }}</v-col>
+            </v-row>
+            <v-row justify="center">
+              <v-col md="3">Telefono</v-col>
+              <v-col md="8">{{ infoContact.phone }}</v-col>
+            </v-row>
+          </v-card>
+        </v-col>
+
+        <v-col>
+          <v-card>
+            <v-card-title>Información de empresa</v-card-title>
+            <v-row justify="center">
+              <v-col md="3">Institución</v-col>
+              <v-col md="8">{{ infoCharge.institution }}</v-col>
+            </v-row>
+            <v-row justify="center">
+              <v-col md="3">Rol</v-col>
+              <v-col md="8">{{ infoCharge.rol }}</v-col>
+            </v-row>
+            <v-row justify="center">
+              <v-col md="3">Cargo</v-col>
+              <v-col md="8">{{ infoCharge.charge }}</v-col>
+            </v-row>
+          </v-card>
+        </v-col>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -28,36 +62,17 @@ export default {
   name: "UserProfile",
   data() {
     return {
-      headers: [
-        {
-          text: "Dessert (100g serving)",
-          align: "left",
-          sortable: false,
-          value: "name"
-        },
-        { text: "Name", value: "name" },
-        { text: "Actions", value: "action" }
-      ],
-      desserts: [
-        {
-          name: "Frozen Yogurt"
-        },
-        {
-          name: "Ice cream sandwich"
-        },
-        {
-          name: "Eclair"
-        },
-        {
-          name: "Cupcake"
-        },
-        {
-          name: "Gingerbread"
-        },
-        {
-          name: "Jelly bean"
-        }
-      ]
+      infoContact: {
+        name: "Jorge Garcia",
+        email: "jacomino@tuta.io",
+        phone: 14912459
+      },
+
+      infoCharge: {
+        institution: "",
+        rol: "",
+        charge: ""
+      }
     };
   }
 };
