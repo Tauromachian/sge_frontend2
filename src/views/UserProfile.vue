@@ -17,9 +17,7 @@
         </material-card>
       </v-flex>
       <v-flex xs12 md8>
-        <app-data-table :headers="headers" :items="desserts">
-
-        </app-data-table>
+        <app-data-table :headers="headers" :items="desserts"></app-data-table>
       </v-flex>
     </v-layout>
   </v-container>
@@ -28,8 +26,8 @@
 <script>
 export default {
   name: "UserProfile",
-  data(){
-    return{
+  data() {
+    return {
       headers: [
         {
           text: "Dessert (100g serving)",
@@ -40,57 +38,27 @@ export default {
         { text: "Name", value: "name" },
         { text: "Actions", value: "action" }
       ],
-    desserts: [
+      desserts: [
         {
-          name: "Frozen Yogurt",
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: "1%"
+          name: "Frozen Yogurt"
         },
         {
-          name: "Ice cream sandwich",
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: "1%"
+          name: "Ice cream sandwich"
         },
         {
-          name: "Eclair",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: "7%"
+          name: "Eclair"
         },
         {
-          name: "Cupcake",
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: "8%"
+          name: "Cupcake"
         },
         {
-          name: "Gingerbread",
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: "16%"
+          name: "Gingerbread"
         },
         {
-          name: "Jelly bean",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: "0%"
+          name: "Jelly bean"
         }
       ]
-    }
+    };
   }
 };
 </script>
