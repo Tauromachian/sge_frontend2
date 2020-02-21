@@ -57,10 +57,10 @@ export default {
         text: "Consumos"
       },
       {
-        to: "/user-profile",
+        to: "/user-management",
 
         icon: "mdi-account",
-        text: "Usuarios"
+        text: "Gestion de Usuarios"
       },
       {
         to: "/monitorization",
