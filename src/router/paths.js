@@ -21,6 +21,11 @@ export default [
     view: 'UserProfile'
   },
   {
+    path: '/user-management',
+    name: 'User Management',
+    view: 'UserManagement'
+  },
+  {
     path: '/monitorization',
     name: 'Monitorization',
     view: 'Monitorization'
