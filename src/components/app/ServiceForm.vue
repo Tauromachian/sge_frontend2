@@ -3,10 +3,10 @@
     <v-form ref="form">
       <v-container py-0>
         <v-layout wrap>
-          <v-flex xs12 md4>
+          <v-flex xs12 md2>
             <v-text-field label="Numero del metro" v-model="meterNumber" :rules="meterNumberRules" />
           </v-flex>
-          <v-flex xs12 md6>
+          <v-flex xs12 md4>
             <v-text-field
               label="Nombre del Servicio"
               v-model="serviceName"
@@ -14,8 +14,20 @@
             />
           </v-flex>
 
-          <v-flex xs12 md2>
-            <v-select label="Tipo de servicio" v-model="serviceType" :items="serviceTypeItems" />
+          <v-flex xs12 md9>
+            <material-button-group v-model="serviceTypeTransformer" label="Tipo de servicio (Segun pago)">
+              <v-btn class="ml-0" value="Monofásico 110 V">Monofásico 110 V</v-btn>
+              <v-btn value="Monofásico 220 V">Monofásico 220 V</v-btn>
+              <v-btn value="Trifásico 220 V">Trifásico 220 V</v-btn>
+              <v-btn value="Trifásico 480 V">Trifásico 480 V</v-btn>
+            </material-button-group>
+          </v-flex>
+
+          <v-flex xs12 md3>
+            <material-button-group v-model="serviceTypePay" label="Tipo de servicio (Segun pago)">
+              <v-btn class="ml-0" value="Prepago">Prepago</v-btn>
+              <v-btn value="Pospago">Pospago</v-btn>
+            </material-button-group>
           </v-flex>
 
           <v-flex xs12 md3>
@@ -111,7 +123,8 @@ export default {
     return {
       serviceName: "",
       serviceCode: "",
-      serviceType: "",
+      serviceTypeTransformer: "",
+      serviceTypePay: "",
       crf: "",
       exclusive: false,
       tarifType: "M1-A",
