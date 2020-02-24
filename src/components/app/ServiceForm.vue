@@ -165,6 +165,14 @@ export default {
       if (val === "Alta") {
         this.transformersAmount = 0;
       }
+    },
+    tarifType: function(val){
+      if(val === "B1"){
+        this.exclusive = false;
+      }
+      else if(val === "M1-A"){
+        this.exclusive = true;
+      }
     }
   }
 };
