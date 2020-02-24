@@ -15,7 +15,7 @@
           </v-flex>
 
           <v-flex xs12 md9>
-            <material-button-group v-model="serviceTypeTransformer" label="Tipo de servicio (Segun pago)">
+            <material-button-group v-model="serviceTypeTransformer" label="Tipo de servicio (Segun transformación)">
               <v-btn class="ml-0" value="Monofásico 110 V">Monofásico 110 V</v-btn>
               <v-btn value="Monofásico 220 V">Monofásico 220 V</v-btn>
               <v-btn value="Trifásico 220 V">Trifásico 220 V</v-btn>
@@ -134,15 +134,7 @@ export default {
       alimentation: "Simple",
       metrage: "Alta",
       capacity: "",
-      serviceTypeItems: [
-        "Monofásico 110 V",
-        "Monofásico 220 V",
-        "Trifásico 220 V",
-        "Trifásico 480 V"
-      ],
-      metrageItems: ["Baja", "Alta"],
       transformersAmount: 0,
-      transformersItems: [1, 2, 3],
       serviceNameRules: [
         v => !!v || "El nombre del servicio falta",
         v => isLettersWithBlankSpaces(v) || "Caracteres no permitidos"
