@@ -17,6 +17,7 @@
       class="ag-theme-material"
       :columnDefs="columnDefs"
       :rowData="rowData"
+      :quickFilterText="search"
     ></ag-grid-vue>
   </v-card>
 </template>
@@ -27,7 +28,8 @@ export default {
   data() {
     return {
       columnDefs: null,
-      rowData: null
+      rowData: null,
+      search: ""
     };
   },
   beforeMount() {
@@ -37,21 +39,24 @@ export default {
         field: "service",
         sortable: true,
         filter: true,
-        resizable: true
+        resizable: true,
+        editable: true
       },
       {
         headerName: "CodCli",
         field: "clientCode",
         sortable: true,
         filter: true,
-        resizable: true
+        resizable: true,
+        editable: true
       },
       {
         headerName: "Price",
         field: "price",
         sortable: true,
         filter: true,
-        resizable: true
+        resizable: true,
+        editable: true
       },
       {
         headerName: "Enero",
@@ -61,14 +66,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -80,14 +87,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -99,14 +108,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -118,14 +129,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -137,14 +150,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -156,14 +171,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -175,14 +192,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -194,14 +213,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -213,14 +234,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -232,14 +255,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -251,14 +276,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       },
@@ -270,14 +297,16 @@ export default {
             field: "PlanJanuary",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           },
           {
             headerName: "Pico",
             field: "PlanPike",
             sortable: true,
             filter: true,
-            resizable: true
+            resizable: true,
+            editable: true
           }
         ]
       }
