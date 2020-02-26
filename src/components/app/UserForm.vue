@@ -1,5 +1,5 @@
 <template>
-  <material-card color="primary" title="Formulario de servicio" text="Inserta un nuevo servicio">
+  <material-card color="primary" title="Formulario de usuarios" text="Inserta un nuevo usuario">
     <v-form ref="form">
       <v-container py-0>
         <v-layout wrap>
