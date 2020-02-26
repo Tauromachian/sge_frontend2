@@ -18,91 +18,91 @@ export default {
   },
   beforeMount() {
     this.columnDefs = [
-      { headerName: "Servicio", field: "service", sortable: true},
-      { headerName: "CodCli", field: "clientCode", sortable: true },
-      { headerName: "Price", field: "price", sortable: true },
+      { headerName: "Servicio", field: "service", sortable: true, filter: true, resizable: true},
+      { headerName: "CodCli", field: "clientCode", sortable: true, filter: true, resizable: true },
+      { headerName: "Price", field: "price", sortable: true, filter: true, resizable: true },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       },
       {
         headerName: "Enero",
         children: [
-          { headerName: "Plan", field: "PlanJanuary", sortable: true },
-          { headerName: "Pico", field: "PlanPike", sortable: true }
+          { headerName: "Plan", field: "PlanJanuary", sortable: true, filter: true, resizable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true, filter: true, resizable: true }
         ]
       }
     ];
