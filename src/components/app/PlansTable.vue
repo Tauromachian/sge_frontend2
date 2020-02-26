@@ -1,6 +1,6 @@
 <template>
   <ag-grid-vue
-    style="width: 500px; height: 500px;"
+    style="width: inherit; height: 500px;"
     class="ag-theme-balham"
     :columnDefs="columnDefs"
     :rowData="rowData"
@@ -8,7 +8,6 @@
 </template>
 
 <script>
-
 export default {
   name: "ServiceTable",
   data() {
@@ -19,15 +18,101 @@ export default {
   },
   beforeMount() {
     this.columnDefs = [
-      { headerName: "Make", field: "make" },
-      { headerName: "Model", field: "model" },
-      { headerName: "Price", field: "price" }
+      { headerName: "Servicio", field: "service", sortable: true},
+      { headerName: "CodCli", field: "clientCode", sortable: true },
+      { headerName: "Price", field: "price", sortable: true },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      },
+      {
+        headerName: "Enero",
+        children: [
+          { headerName: "Plan", field: "PlanJanuary", sortable: true },
+          { headerName: "Pico", field: "PlanPike", sortable: true }
+        ]
+      }
     ];
 
     this.rowData = [
-      { make: "Toyota", model: "Celica", price: 35000 },
-      { make: "Ford", model: "Mondeo", price: 32000 },
-      { make: "Porsche", model: "Boxter", price: 72000 }
+      { service: "Planta Piloto", clientCode: "330", price: 35000 },
+      { service: "900", clientCode: "340", price: 32000 },
+      { service: "C1", clientCode: "342", price: 71000 },
+      { service: "C2", clientCode: "343", price: 52000 },
+      { service: "C3", clientCode: "344", price: 12000 }
     ];
   }
 };
