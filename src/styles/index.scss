@@ -29,3 +29,8 @@
 @import "material-dashboard/alerts";
 @import "material-dashboard/fixed-plugin";
 @import "material-dashboard/dropdown";
+
+.ag-row .ag-cell {
+  display: flex;
+  align-items: center;
+}

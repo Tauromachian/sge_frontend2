@@ -1,7 +1,7 @@
 <template>
-  <v-container :fluid="fluid" class="pl-0 pr-0">
+  <v-container :fluid="fluid">
     <v-row>
-      <v-col md="5"></v-col>
+      <v-col md="3"></v-col>
 
       <v-col md="2">
         <v-select v-model="rowAmount" :items="pageAmounts" label="Filas"></v-select>
@@ -15,6 +15,16 @@
           hide-details
           append-icon="mdi-magnify"
         ></v-text-field>
+      </v-col>
+      <v-col md="2">
+        <v-btn-toggle group mandatory v-model="rowHeight">
+          <v-btn value="48">
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
+          <v-btn value="24">
+            <v-icon>mdi-format-align-justify</v-icon>
+          </v-btn>
+        </v-btn-toggle>
       </v-col>
     </v-row>
     <ag-grid-vue
@@ -40,6 +50,7 @@ export default {
       defaultColDef: null,
       pagination: true,
       rowAmount: 10,
+      rowHeight: 48,
       pageAmounts: [10, 50, 100],
       fluid: true,
       gridOptions: {},
@@ -105,6 +116,10 @@ export default {
   watch: {
     rowAmount: function(val) {
       this.gridApi.paginationSetPageSize(Number(val));
+    },
+    rowHeight: function(val){
+      this.gridOptions.rowHeight = Number(val);
+      this.gridApi.resetRowHeights();
     }
   }
 };
