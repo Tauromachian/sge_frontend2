@@ -19,6 +19,7 @@
       :rowData="rowData"
       :quickFilterText="search"
       :defaultColDef="defaultColDef"
+      :pagination="pagination"
     ></ag-grid-vue>
   </v-card>
 </template>
@@ -31,7 +32,8 @@ export default {
       columnDefs: null,
       rowData: null,
       search: "",
-      defaultColDef: null
+      defaultColDef: null,
+      pagination: true
     };
   },
   beforeMount() {

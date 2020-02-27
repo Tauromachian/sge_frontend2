@@ -21,6 +21,7 @@
       :rowData="rowData"
       :quickFilterText="search"
       :rowHeight="rowHeight"
+      :pagination="pagination"
     ></ag-grid-vue>
   </v-card>
 </template>
@@ -32,7 +33,8 @@ export default {
     return {
       search: "",
       rowHeight: 35,
-      defaultColDef: null
+      defaultColDef: null,
+      pagination: true
     };
   },
 
