@@ -18,6 +18,7 @@
       :columnDefs="columnDefs"
       :rowData="rowData"
       :quickFilterText="search"
+      :defaultColDef="defaultColDef"
     ></ag-grid-vue>
   </v-card>
 </template>
@@ -29,53 +30,34 @@ export default {
     return {
       columnDefs: null,
       rowData: null,
-      search: ""
+      search: "",
+      defaultColDef: null
     };
   },
   beforeMount() {
-    this.columnDefs = [
+    (this.columnDefs = [
       {
         headerName: "Servicio",
-        field: "service",
-        sortable: true,
-        filter: true,
-        resizable: true,
-        editable: true
+        field: "service"
       },
       {
         headerName: "CodCli",
-        field: "clientCode",
-        sortable: true,
-        filter: true,
-        resizable: true,
-        editable: true
+        field: "clientCode"
       },
       {
         headerName: "Price",
-        field: "price",
-        sortable: true,
-        filter: true,
-        resizable: true,
-        editable: true
+        field: "price"
       },
       {
         headerName: "Enero",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -84,19 +66,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -105,19 +79,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -126,19 +92,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -147,19 +105,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -168,19 +118,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -189,19 +131,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -210,19 +144,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -231,19 +157,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -252,19 +170,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -273,19 +183,11 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       },
@@ -294,23 +196,21 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike",
-            sortable: true,
-            filter: true,
-            resizable: true,
-            editable: true
+            field: "PlanPike"
           }
         ]
       }
-    ];
+    ]),
+      (this.defaultColDef = {
+        sortable: true,
+        resizable: true,
+        filter: true,
+        editable: true
+      });
 
     this.rowData = [
       { service: "Planta Piloto", clientCode: "330", price: 35000 },
