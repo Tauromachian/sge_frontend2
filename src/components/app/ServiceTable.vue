@@ -11,23 +11,16 @@
         hide-details
         append-icon="mdi-magnify"
       ></v-text-field>
-      <v-btn-toggle group mandatory>
-        <v-btn @click="setNoDense">
-          <v-icon>mdi-menu</v-icon>
-        </v-btn>
-        <v-btn @click="setDense">
-          <v-icon>mdi-format-align-justify</v-icon>
-        </v-btn>
-      </v-btn-toggle>
     </v-card-title>
     <ag-grid-vue
       style="width: inherit; height: 500px;"
       class="ag-theme-material"
+      :gridOptions="gridOptions"
       :defaultColDef="defaultColDef"
       :columnDefs="columnDefs"
       :rowData="rowData"
       :quickFilterText="search"
-      :getRowHeight="rowHeight"
+      :rowHeight="rowHeight"
     ></ag-grid-vue>
   </v-card>
 </template>
@@ -38,23 +31,17 @@ export default {
   data() {
     return {
       search: "",
-      rowHeight: null,
+      rowHeight: 35,
       defaultColDef: null
     };
   },
-  methods: {
-    setNoDense() {
-      this.rowHeight = 50;
-    },
-    setDense() {
-      this.rowHeight = 25;
-    }
-  },
+
   beforeMount() {
     (this.columnDefs = [
       {
         headerName: "Servicio",
-        field: "service"
+        field: "service",
+        rowHeight: 50
       },
       {
         headerName: "CRF",
