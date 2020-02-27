@@ -1,29 +1,34 @@
 <template>
-  <v-card>
-    <v-card-title>
-      Servicios
-      <v-spacer></v-spacer>
+  <v-container :fluid="fluid" class="pl-0 pr-0">
+    <v-row>
+      <v-col md="5"></v-col>
 
-      <v-text-field
-        v-model="search"
-        label="Search"
-        single-line
-        hide-details
-        append-icon="mdi-magnify"
-      ></v-text-field>
-    </v-card-title>
+      <v-col md="2">
+        <v-select v-model="rowAmount" :items="pageAmounts" label="Filas"></v-select>
+      </v-col>
+
+      <v-col md="5">
+        <v-text-field
+          v-model="search"
+          label="Search"
+          single-line
+          hide-details
+          append-icon="mdi-magnify"
+        ></v-text-field>
+      </v-col>
+    </v-row>
     <ag-grid-vue
       style="width: inherit; height: 500px;"
       class="ag-theme-material"
-      :gridOptions="gridOptions"
       :defaultColDef="defaultColDef"
       :columnDefs="columnDefs"
       :rowData="rowData"
       :quickFilterText="search"
-      :rowHeight="rowHeight"
       :pagination="pagination"
+      :paginationPageSize="rowAmount"
+      :gridOptions="gridOptions"
     ></ag-grid-vue>
-  </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -32,9 +37,13 @@ export default {
   data() {
     return {
       search: "",
-      rowHeight: 35,
       defaultColDef: null,
-      pagination: true
+      pagination: true,
+      rowAmount: 10,
+      pageAmounts: [10, 50, 100],
+      fluid: true,
+      gridOptions: {},
+      gridApi: null
     };
   },
 
@@ -42,8 +51,7 @@ export default {
     (this.columnDefs = [
       {
         headerName: "Servicio",
-        field: "service",
-        rowHeight: 50
+        field: "service"
       },
       {
         headerName: "CRF",
@@ -74,8 +82,30 @@ export default {
       { service: "900", clientCode: "340", price: 32000 },
       { service: "C1", clientCode: "342", price: 71000 },
       { service: "C2", clientCode: "343", price: 52000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
+      { service: "C3", clientCode: "344", price: 12000 },
       { service: "C3", clientCode: "344", price: 12000 }
     ];
+  },
+  mounted() {
+    this.gridApi = this.gridOptions.api;
+  },
+  watch: {
+    rowAmount: function(val) {
+      this.gridApi.paginationSetPageSize(Number(val));
+    }
   }
 };
 </script>
