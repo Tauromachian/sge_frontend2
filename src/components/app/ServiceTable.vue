@@ -1,22 +1,42 @@
 <template>
   <v-container :fluid="fluid">
     <v-row>
-      <v-col md="3"></v-col>
+      <v-col md="2"></v-col>
 
       <v-col md="2">
+        <v-dialog v-model="dialog" width="500">
+          <template v-slot:activator="{ on }">
+            <v-btn color="primary" v-on="on">Columnas</v-btn>
+          </template>
+
+          <v-card>
+            <app-column-select-form
+              :columns="columnDefs"
+              v-model="visibleColumns"
+            ></app-column-select-form>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" text @click="dialog = false">Aceptar</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-col>
+
+      <v-col md="1">
         <v-select v-model="rowAmount" :items="pageAmounts" label="Filas"></v-select>
       </v-col>
 
-      <v-col md="5">
+      <v-col md="4">
         <v-text-field
           v-model="search"
-          label="Search"
+          label="Buscar"
           single-line
           hide-details
           append-icon="mdi-magnify"
         ></v-text-field>
       </v-col>
-      <v-col md="2">
+      <v-col md="1">
         <v-btn-toggle group mandatory v-model="rowHeight">
           <v-btn value="48">
             <v-icon>mdi-menu</v-icon>
@@ -46,15 +66,19 @@ export default {
   name: "ServiceTable",
   data() {
     return {
-      search: "",
+      columnDefs: [],
+      columnFields: [],
       defaultColDef: null,
-      pagination: true,
-      rowAmount: 10,
-      rowHeight: 48,
-      pageAmounts: [10, 50, 100],
+      dialog: false,
       fluid: true,
       gridOptions: {},
-      gridApi: null
+      gridApi: null,
+      pagination: true,
+      pageAmounts: [10, 50, 100],
+      rowAmount: 10,
+      rowHeight: 48,
+      search: "",
+      visibleColumns: []
     };
   },
 
@@ -73,12 +97,12 @@ export default {
         field: "price"
       },
       {
-        headerName: "Codigo",
-        field: "price"
+        headerName: "Codigo1",
+        field: "price1"
       },
       {
-        headerName: "Codigo",
-        field: "price"
+        headerName: "Codigo2",
+        field: "price2"
       }
     ]),
       (this.defaultColDef = {
@@ -110,16 +134,37 @@ export default {
       { service: "C3", clientCode: "344", price: 12000 }
     ];
   },
+  methods: {
+    setVisibleColumns: function() {
+      this.columnDefs.forEach(element => {
+        if (this.gridOptions.columnApi.getColumn(element.field).visible) {
+          this.visibleColumns.push(element.field);
+        }
+      });
+    },
+    setColumnFields: function () {
+      this.columnDefs.forEach(element => {
+        this.columnFields.push(element.field);
+      });
+    }
+  },
   mounted() {
     this.gridApi = this.gridOptions.api;
+    this.setVisibleColumns();
+    this.setColumnFields();
   },
   watch: {
     rowAmount: function(val) {
       this.gridApi.paginationSetPageSize(Number(val));
     },
-    rowHeight: function(val){
+    rowHeight: function(val) {
       this.gridOptions.rowHeight = Number(val);
       this.gridApi.resetRowHeights();
+    },
+    visibleColumns: function(val) {
+      let difference = this.columnFields.filter(x => !val.includes(x));
+      this.gridOptions.columnApi.setColumnsVisible(val, true);
+      this.gridOptions.columnApi.setColumnsVisible(difference, false);
     }
   }
 };
