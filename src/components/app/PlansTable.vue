@@ -1,7 +1,28 @@
 <template>
   <v-container :fluid="fluid">
     <v-row>
-      <v-col md="3"></v-col>
+      <v-col md="2"></v-col>
+
+      <v-col md="2">
+        <v-dialog v-model="dialog" width="500">
+          <template v-slot:activator="{ on }">
+            <v-btn color="primary" v-on="on">Columnas</v-btn>
+          </template>
+
+          <v-card>
+            <app-column-select-form
+              :gridOptions="gridOptions"
+              :columns="columnDefs"
+              v-model="visibleColumns"
+            ></app-column-select-form>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" text @click="dialog = false">Aceptar</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-col>
 
       <v-col md="1">
         <v-select v-model="rowAmount" :items="pageAmounts" label="Filas"></v-select>
@@ -43,20 +64,22 @@
 
 <script>
 export default {
-  name: "ServiceTable",
+  name: "PlansTable",
   data() {
     return {
-      columnDefs: null,
-      rowData: null,
-      search: "",
+      columnDefs: [],
+      columnFields: [],
       defaultColDef: null,
-      pagination: true,
-      rowAmount: 10,
-      rowHeight: 48,
-      pageAmounts: [10, 50, 100],
+      dialog: false,
       fluid: true,
       gridOptions: {},
-      gridApi: null
+      gridApi: null,
+      pagination: true,
+      pageAmounts: [10, 50, 100],
+      rowAmount: 10,
+      rowHeight: 48,
+      search: "",
+      visibleColumns: []
     };
   },
   beforeMount() {
@@ -78,154 +101,154 @@ export default {
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planJanuary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeJanuary"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Febrero",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planFebrary"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeFebrary"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Marzo",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planMarch"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeMarch"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Abril",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planApril"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeApril"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Mayo",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planMay"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeMay"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Junio",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planJune"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeJune"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Julio",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planJule"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeJule"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Agosto",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planAgost"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeAgost"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Septiembre",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planSeptember"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeSeptember"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Octubre",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planOctober"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeOctober"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Noviembre",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planNovember"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeNovember"
           }
         ]
       },
       {
-        headerName: "Enero",
+        headerName: "Diciembre",
         children: [
           {
             headerName: "Plan",
-            field: "PlanJanuary"
+            field: "planDecember"
           },
           {
             headerName: "Pico",
-            field: "PlanPike"
+            field: "planPikeDecember"
           }
         ]
       }
@@ -245,8 +268,38 @@ export default {
       { service: "C3", clientCode: "344", price: 12000 }
     ];
   },
+  methods: {
+    setVisibleColumns: function() {
+      let array = [];
+      this.columnDefs.forEach(element => {
+        this.visibleColumns = (this.setVisibleColumnsRecursive(array, element));
+      });
+    },
+
+    setVisibleColumnsRecursive: function(array, object) {
+      if (!object.children) {
+        array.push(object.field);
+        console.log(array);
+        
+        return array;
+      }
+
+      object.children.forEach(element => {
+        array.concat(this.setVisibleColumnsRecursive(array, element));
+      })
+      
+      return array;
+    },
+    setColumnFields: function() {
+      this.columnDefs.forEach(element => {
+        this.columnFields.push(element.field);
+      });
+    }
+  },
   mounted() {
     this.gridApi = this.gridOptions.api;
+    this.setVisibleColumns();
+    this.setColumnFields();
   },
   watch: {
     rowAmount: function(val) {
@@ -255,6 +308,11 @@ export default {
     rowHeight: function(val) {
       this.gridOptions.rowHeight = Number(val);
       this.gridApi.resetRowHeights();
+    },
+    visibleColumns: function(val) {
+      let difference = this.columnFields.filter(x => !val.includes(x));
+      this.gridOptions.columnApi.setColumnsVisible(val, true);
+      this.gridOptions.columnApi.setColumnsVisible(difference, false);
     }
   }
 };
