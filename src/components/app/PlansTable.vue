@@ -3,14 +3,14 @@
     <v-row>
       <v-col md="3"></v-col>
 
-      <v-col md="2">
+      <v-col md="1">
         <v-select v-model="rowAmount" :items="pageAmounts" label="Filas"></v-select>
       </v-col>
 
       <v-col md="5">
         <v-text-field
           v-model="search"
-          label="Search"
+          label="Buscar"
           single-line
           hide-details
           append-icon="mdi-magnify"
