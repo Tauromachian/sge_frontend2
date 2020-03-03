@@ -10,10 +10,7 @@
           </template>
 
           <v-card>
-            <app-column-select-form
-              :columns="columnDefs"
-              v-model="visibleColumns"
-            ></app-column-select-form>
+            <app-column-select-list :columns="columnDefs" v-model="visibleColumns" />
 
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -142,7 +139,7 @@ export default {
         }
       });
     },
-    setColumnFields: function () {
+    setColumnFields: function() {
       this.columnDefs.forEach(element => {
         this.columnFields.push(element.field);
       });
