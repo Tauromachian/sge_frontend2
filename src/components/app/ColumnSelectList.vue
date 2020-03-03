@@ -25,6 +25,7 @@ export default {
   data: function() {
     return {};
   },
+  // eslint-disable-next-line no-unused-vars
   render: function(h) {
     const vListItems = this.makeList();
 
@@ -40,52 +41,72 @@ export default {
   methods: {
     makeList() {
       const vListItems = this.columns.map(column => {
-        return (
-          <v-list-item
-            value={column.field}
-            {...{
-              scopedSlots: {
-                default: scope => {
-                  return this.makeListItem(scope.active, scope.toggle, column);
+        if (column.children) {
+          let fields = this.getChildrenFields(column);
+          return this.makeListItem(column, fields);
+        } else {
+          return (
+            <v-list-item
+              value={column.field}
+              {...{
+                scopedSlots: {
+                  default: scope => {
+                    return this.makeListItemContent(
+                      scope.active,
+                      scope.toggle,
+                      column
+                    );
+                  }
                 }
-              }
-            }}
-          >
-            
-          </v-list-item>
-        );
+              }}
+            ></v-list-item>
+          );
+        }
       });
 
       return vListItems;
     },
-    makeListItem(active, toggle, column) {
+    makeListItem(column, field) {
       return (
-        [<v-list-item-action>
+        <v-list-item
+          value={field}
+          {...{
+            scopedSlots: {
+              default: scope => {
+                return this.makeListItemContent(
+                  scope.active,
+                  scope.toggle,
+                  column
+                );
+              }
+            }
+          }}
+        ></v-list-item>
+      );
+    },
+    makeListItemContent(active, toggle, column) {
+      return [
+        <v-list-item-action>
           <v-checkbox
             color="primary"
             onClick={toggle}
             vModel={active}
           ></v-checkbox>
-        </v-list-item-action>
-        ,
+        </v-list-item-action>,
         <v-list-item-content>
           <v-list-item-title>{column.headerName}</v-list-item-title>
-        </v-list-item-content>]
-      );
-    }
+        </v-list-item-content>
+      ];
+    },
+    getChildrenFields(parent) {
+      let fieldString = "";
+      fieldString += parent.children[0].field;
 
-    // makeList() {
-    //   let items = [];
-    //   items = columns.map(element => {
-    //     if (element.children) {
-    //       return element.children.map(children => {
-    //         return children.field;
-    //       });
-    //     } else {
-    //       return element.field;
-    //     }
-    //   });
-    // }
+      for (let i = 1; i < parent.children.length; i++) {
+        fieldString += ", " + parent.children[i].field;
+      }
+      return fieldString;
+    }
   },
   props: {
     value: Array,
