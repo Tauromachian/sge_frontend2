@@ -45,22 +45,7 @@ export default {
           let fields = this.getChildrenFields(column);
           return this.makeListItem(column, fields);
         } else {
-          return (
-            <v-list-item
-              value={column.field}
-              {...{
-                scopedSlots: {
-                  default: scope => {
-                    return this.makeListItemContent(
-                      scope.active,
-                      scope.toggle,
-                      column
-                    );
-                  }
-                }
-              }}
-            ></v-list-item>
-          );
+          return this.makeListItem(column, column.field)
         }
       });
 
