@@ -23,27 +23,15 @@ export default {
     "v-checkbox": VCheckbox
   },
   data: function() {
-    return {};
+    return {
+      visibleColumns: []
+    };
   },
   props: {
     value: Array,
     columns: Array
   },
-  computed: {
-    hide: {
-      get() {
-        return this.column;
-      }
-    },
-    visibleColumns: {
-      get() {
-        return this.value;
-      },
-      set(selection) {
-        this.$emit("input", selection);
-      }
-    }
-  },
+  
   // eslint-disable-next-line no-unused-vars
   render: function(h) {
     const vListItems = this.makeList();
@@ -54,7 +42,7 @@ export default {
         <v-list-item-group
           multiple
           value={this.visibleColumns}
-          onChange={this.hideAndShow}
+          onChange={this.getTableVisibleColumns}
         >
           {vListItems}
         </v-list-item-group>
@@ -62,8 +50,19 @@ export default {
     );
   },
   methods: {
-    hideAndShow(columnList) {
-      console.log(columnList);
+    getTableVisibleColumns(listSelectedColumns) {
+      console.log(listSelectedColumns);
+      
+      const tableSelectedColumns = listSelectedColumns.flatMap(columnField => {
+        columnField = columnField.split(",");
+        return columnField.map(column => {
+          return column.trim();
+        });
+      });
+
+      console.log(tableSelectedColumns);
+      
+      this.$emit("input", tableSelectedColumns);
     },
     makeList() {
       const vListItems = this.columns.map(column => {
@@ -119,15 +118,15 @@ export default {
       return fieldString;
     }
   },
-  beforeMount(){
+  beforeMount() {
     this.visibleColumns = this.columns.map(column => {
-      if(column.children){
+      if (column.children) {
         let children = this.getChildrenFields(column);
         return children;
-      }else if (this.value.includes(column.field)){
+      } else if (this.value.includes(column.field)) {
         return column.field;
       }
-    })
+    });
   }
 };
 </script>
