@@ -4,7 +4,7 @@
       <v-col md="2"></v-col>
 
       <v-col md="2">
-        <v-dialog v-model="dialog2" width="500">
+        <v-dialog v-model="dialog" width="500">
           <template v-slot:activator="{ on }">
             <v-btn color="primary" v-on="on">Columnas</v-btn>
           </template>
@@ -14,7 +14,7 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary" text @click="dialog2 = false">Aceptar</v-btn>
+              <v-btn color="primary" text @click="dialog = false">Aceptar</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -67,7 +67,6 @@ export default {
       columnFields: [],
       defaultColDef: null,
       dialog: false,
-      dialog2: false,
       fluid: true,
       gridOptions: {},
       gridApi: null,
