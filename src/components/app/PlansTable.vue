@@ -1,7 +1,7 @@
 <template>
   <v-container :fluid="fluid">
     <v-row>
-            <v-col md="2"></v-col>
+      <v-col md="2"></v-col>
 
       <v-col md="2">
         <v-dialog v-model="dialog2" width="500">
@@ -272,27 +272,28 @@ export default {
   },
   methods: {
     setVisibleColumns: function() {
-      this.visibleColumns = this.columnDefs.flatMap(column => {
-        return this.setVisibleColumnsRecursive(column);
+      const columnFields = this.columnDefs.flatMap(column => {
+        return this.getColumnFieldsRecursive(column);
+      });
+      
+      this.visibleColumns = columnFields.map(column => {
+        if (this.gridOptions.columnApi.getColumn(column).visible) {
+          return column;
+        }
       })
     },
-    setVisibleColumnsRecursive: function(column) {
-      if(!column.children){
-        return column.field;
-      }
-      return column.children.map(element => this.setVisibleColumnsRecursive(element));
-    },
     setColumnFields: function() {
-      
       this.columnFields = this.columnDefs.flatMap(column => {
-        return this.setColumnFieldsRecursive(column);
+        return this.getColumnFieldsRecursive(column);
       });
     },
-    setColumnFieldsRecursive: function (column) {
-      if (!column.children){
+    getColumnFieldsRecursive: function(column) {
+      if (!column.children) {
         return column.field;
       }
-      return column.children.map(column => this.setColumnFieldsRecursive(column));
+      return column.children.map(column =>
+        this.getColumnFieldsRecursive(column)
+      );
     }
   },
   mounted() {
