@@ -274,25 +274,23 @@ export default {
       const columnFields = this.columnDefs.flatMap(column => {
         return this.getColumnFieldsRecursive(column);
       });
-      
+
       this.visibleColumns = columnFields.map(column => {
         if (this.gridOptions.columnApi.getColumn(column).visible) {
           return column;
         }
-      })
+      });
     },
     setColumnFields: function() {
-      this.columnFields = this.columnDefs.flatMap(column => {
-        return this.getColumnFieldsRecursive(column);
-      });
+      this.columnFields = this.columnDefs.flatMap(column =>
+        this.getColumnFieldsRecursive(column)
+      );
     },
     getColumnFieldsRecursive: function(column) {
       if (!column.children) {
         return column.field;
       }
-      return column.children.map(column =>
-        this.getColumnFieldsRecursive(column)
-      );
+      return column.children.map(this.getColumnFieldsRecursive);
     }
   },
   mounted() {
