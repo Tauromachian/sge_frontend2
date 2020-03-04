@@ -133,15 +133,15 @@ export default {
   },
   methods: {
     setVisibleColumns: function() {
-      this.columnDefs.forEach(element => {
+      this.visibleColumns = this.columnDefs.map(element => {
         if (this.gridOptions.columnApi.getColumn(element.field).visible) {
-          this.visibleColumns.push(element.field);
+          return element.field;
         }
       });
     },
     setColumnFields: function() {
-      this.columnDefs.forEach(element => {
-        this.columnFields.push(element.field);
+      this.columnFields = this.columnDefs.map(element => {
+        return element.field;
       });
     }
   },
