@@ -25,6 +25,25 @@ export default {
   data: function() {
     return {};
   },
+  props: {
+    value: Array,
+    columns: Array
+  },
+  computed: {
+    hide: {
+      get() {
+        return this.column;
+      }
+    },
+    visibleColumns: {
+      get() {
+        return this.value;
+      },
+      set(selection) {
+        this.$emit("input", selection);
+      }
+    }
+  },
   // eslint-disable-next-line no-unused-vars
   render: function(h) {
     const vListItems = this.makeList();
@@ -32,20 +51,27 @@ export default {
     return (
       <v-list flat>
         <v-subheader>Selecciona las columnas a mostrar</v-subheader>
-        <v-list-item-group multiple vModel={this.visibleColumn}>
+        <v-list-item-group
+          multiple
+          value={this.visibleColumns}
+          onChange={this.hideAndShow}
+        >
           {vListItems}
         </v-list-item-group>
       </v-list>
     );
   },
   methods: {
+    hideAndShow(columnList) {
+      console.log(params);
+    },
     makeList() {
       const vListItems = this.columns.map(column => {
         if (column.children) {
           let fields = this.getChildrenFields(column);
           return this.makeListItem(column, fields);
         } else {
-          return this.makeListItem(column, column.field)
+          return this.makeListItem(column, column.field);
         }
       });
 
@@ -91,25 +117,6 @@ export default {
         fieldString += ", " + parent.children[i].field;
       }
       return fieldString;
-    }
-  },
-  props: {
-    value: Array,
-    columns: Array
-  },
-  computed: {
-    hide: {
-      get() {
-        return this.column;
-      }
-    },
-    visibleColumn: {
-      get() {
-        return this.value;
-      },
-      set(selection) {
-        this.$emit("input", selection);
-      }
     }
   }
 };
