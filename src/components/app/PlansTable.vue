@@ -1,24 +1,20 @@
 <template>
   <v-container :fluid="fluid">
     <v-row>
-      <v-col md="2"></v-col>
+            <v-col md="2"></v-col>
 
       <v-col md="2">
-        <v-dialog v-model="dialog" width="500">
+        <v-dialog v-model="dialog2" width="500">
           <template v-slot:activator="{ on }">
             <v-btn color="primary" v-on="on">Columnas</v-btn>
           </template>
 
           <v-card>
-            <app-column-select-form
-              :gridOptions="gridOptions"
-              :columns="columnDefs"
-              v-model="visibleColumns"
-            ></app-column-select-form>
+            <app-column-select-list :columns="columnDefs" v-model="visibleColumns" />
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary" text @click="dialog = false">Aceptar</v-btn>
+              <v-btn color="primary" text @click="dialog2 = false">Aceptar</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -71,6 +67,7 @@ export default {
       columnFields: [],
       defaultColDef: null,
       dialog: false,
+      dialog2: false,
       fluid: true,
       gridOptions: {},
       gridApi: null,
@@ -85,12 +82,17 @@ export default {
   beforeMount() {
     (this.columnDefs = [
       {
+        lockPosition: true,
         headerName: "Servicio",
-        field: "service"
+        field: "service",
+        suppressNavigable: true,
+        suppressMovable: true
       },
       {
+        lockPosition: true,
         headerName: "CodCli",
-        field: "clientCode"
+        field: "clientCode",
+        suppressMovable: true
       },
       {
         headerName: "Price",
@@ -272,28 +274,33 @@ export default {
     setVisibleColumns: function() {
       let array = [];
       this.columnDefs.forEach(element => {
-        this.visibleColumns = (this.setVisibleColumnsRecursive(array, element));
+        this.visibleColumns = this.setVisibleColumnsRecursive(array, element);
       });
     },
 
     setVisibleColumnsRecursive: function(array, object) {
       if (!object.children) {
         array.push(object.field);
-        console.log(array);
-        
         return array;
       }
 
       object.children.forEach(element => {
         array.concat(this.setVisibleColumnsRecursive(array, element));
-      })
-      
+      });
+
       return array;
     },
     setColumnFields: function() {
-      this.columnDefs.forEach(element => {
-        this.columnFields.push(element.field);
+      
+      this.columnFields = this.columnDefs.flatMap(column => {
+        return this.setColumnFieldsRecursive(column);
       });
+    },
+    setColumnFieldsRecursive: function (column) {
+      if (!column.children){
+        return column.field;
+      }
+      return column.children.map(column => this.setColumnFieldsRecursive(column));
     }
   },
   mounted() {
