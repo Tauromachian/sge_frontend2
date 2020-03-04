@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     hideAndShow(columnList) {
-      console.log(params);
+      console.log(columnList);
     },
     makeList() {
       const vListItems = this.columns.map(column => {
@@ -118,6 +118,16 @@ export default {
       }
       return fieldString;
     }
+  },
+  beforeMount(){
+    this.visibleColumns = this.columns.map(column => {
+      if(column.children){
+        let children = this.getChildrenFields(column);
+        return children;
+      }else if (this.value.includes(column.field)){
+        return column.field;
+      }
+    })
   }
 };
 </script>
