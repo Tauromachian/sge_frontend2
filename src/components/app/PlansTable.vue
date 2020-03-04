@@ -272,23 +272,15 @@ export default {
   },
   methods: {
     setVisibleColumns: function() {
-      let array = [];
-      this.columnDefs.forEach(element => {
-        this.visibleColumns = this.setVisibleColumnsRecursive(array, element);
-      });
+      this.visibleColumns = this.columnDefs.flatMap(column => {
+        return this.setVisibleColumnsRecursive(column);
+      })
     },
-
-    setVisibleColumnsRecursive: function(array, object) {
-      if (!object.children) {
-        array.push(object.field);
-        return array;
+    setVisibleColumnsRecursive: function(column) {
+      if(!column.children){
+        return column.field;
       }
-
-      object.children.forEach(element => {
-        array.concat(this.setVisibleColumnsRecursive(array, element));
-      });
-
-      return array;
+      return column.children.map(element => this.setVisibleColumnsRecursive(element));
     },
     setColumnFields: function() {
       
