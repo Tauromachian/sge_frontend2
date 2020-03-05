@@ -22,7 +22,7 @@
             <v-text-field label="Roles" v-model="rol" />
           </v-flex>
           <v-flex xs12 md6>
-            <v-text-field label="Foto" v-model="picture" />
+            <v-file-input accept="image/*" label="Foto" />
           </v-flex>
           <v-flex xs12 md6>
             <v-text-field label="Cargo" v-model="position" :rules="positionRules" />
