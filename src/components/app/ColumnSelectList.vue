@@ -42,7 +42,7 @@ export default {
         <v-list-item-group
           multiple
           value={this.visibleColumns}
-          onChange={this.getTableVisibleColumns}
+          onChange={this.setTableVisibleColumns}
         >
           {vListItems}
         </v-list-item-group>
@@ -50,9 +50,7 @@ export default {
     );
   },
   methods: {
-    getTableVisibleColumns(listSelectedColumns) {
-      console.log(listSelectedColumns);
-      
+    setTableVisibleColumns(listSelectedColumns) {
       const tableSelectedColumns = listSelectedColumns.flatMap(columnField => {
         columnField = columnField.split(",");
         return columnField.map(column => {
@@ -60,8 +58,6 @@ export default {
         });
       });
 
-      console.log(tableSelectedColumns);
-      
       this.$emit("input", tableSelectedColumns);
     },
     makeList() {
