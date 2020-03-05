@@ -85,13 +85,15 @@ export default {
         headerName: "Servicio",
         field: "service",
         suppressNavigable: true,
-        suppressMovable: true
+        suppressMovable: true,
+        editable: false
       },
       {
         lockPosition: true,
         headerName: "CodCli",
         field: "clientCode",
-        suppressMovable: true
+        suppressMovable: true,
+        editable: false
       },
       {
         headerName: "Price",
