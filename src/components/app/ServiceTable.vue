@@ -1,7 +1,10 @@
 <template>
   <v-container :fluid="fluid">
     <v-row>
-      <v-col md="2"></v-col>
+      <v-col md="2">
+        <v-btn color="primary" @click="deleteRow">Borrar columna</v-btn>
+      </v-col>
+
 
       <v-col md="2">
         <v-dialog v-model="dialog" width="500">
@@ -19,6 +22,7 @@
           </v-card>
         </v-dialog>
       </v-col>
+      
 
       <v-col md="1">
         <v-select v-model="rowAmount" :items="pageAmounts" label="Filas"></v-select>
@@ -83,7 +87,8 @@ export default {
     (this.columnDefs = [
       {
         headerName: "Servicio",
-        field: "service"
+        field: "service",
+        checkboxSelection: true
       },
       {
         headerName: "CRF",
@@ -143,6 +148,11 @@ export default {
       this.columnFields = this.columnDefs.map(element => {
         return element.field;
       });
+    },
+    deleteRow: function () {
+      const selectedRow = this.gridApi.getFocusedCell();
+      this.gridOptions.rowData.splice(selectedRow.index, 1);
+      this.gridApi.setRowData(this.gridOptions.rowData);
     }
   },
   mounted() {
